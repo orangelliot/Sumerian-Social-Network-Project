@@ -1,0 +1,6 @@
+o.2'.2	gu4-ab2	_	PN
+o.3'.4	amar-ga	_	PN
+o.4'.3	amar-ga	_	PN
+er.2'.2	gu4-ab2	_	PN
+er.3'.4	amar-ga	_	PN
+er.4'.3	amar-ga	_	PN

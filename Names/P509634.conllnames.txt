@@ -1,0 +1,6 @@
+o.1'.2	a-x-x-x	_	PN
+o.2'.2	i-x-x-x-x	_	PN
+o.3'.2	me-x-x-x	_	PN
+o.4'.1	zi-x-x-x-x	_	PN
+o.5'.2	NI-x-x-x	_	PN
+o.6'.1	in-szi-sa10	i-nn-szi[-n]-sa[pay_for][-ø][-a]	PN
