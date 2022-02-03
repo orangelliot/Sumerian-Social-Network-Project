@@ -1,5 +1,4 @@
 o.1.1	{disz}{d}suen-sze-mi	_	PN
-o.5.2	li-li-lum	_	PN
 o.6.1	um-mi-he-pa2-at	_	PN
 o.7.1	in-szi-sa10	i-nn-szi[-n]-sa[pay_for][-ø][-a]	PN
 o.11.1	in-pa3	i-n-pad[name][-ø]	PN
