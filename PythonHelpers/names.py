@@ -3,7 +3,12 @@ import os
 
 tablets = os.listdir("../Translated")
 
+fileCount = len(tablets)
+currentCount = 0
+
 for tablet in tablets:
+    currentCount = currentCount + 1
+    print(str(currentCount) + "/" + str(fileCount), end="\r")
     # Open tablet and new output file
     output = open("../Names/" + tablet + "names.txt", "w", encoding="utf-8")
     tab = open("../Translated/" + tablet, "r", encoding="utf-8")
@@ -72,3 +77,5 @@ for tablet in tablets:
         for celestial in celestials:
             output.write(celestial + "\n")
     output.write("\n")
+# print again so the progress text is not lost
+print(str(currentCount) + "/" + str(fileCount))
