@@ -1,3 +1,11 @@
-o.3.3	a-hi-i-ma	_	PN
-o.4.3	a-hi-i-ma	_	PN
-o.5.3	a-hi-i-ma	_	PN
+P509664
+a-hi-i-ma
+a-hi-i-ma
+a-hi-i-ma
+
+NONE
+
+NONE
+
+NONE
+

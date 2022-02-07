@@ -1,14 +1,23 @@
-o.1.1	{disz}{d}suen-a-hu-szu	_	PN
-o.2.2	sza-at-{d}gibil6	_	PN
-r.1.2	a-mur-i-lu-su2	_	PN
-r.3.2	bur-ia	_	PN
-r.4.2	sa-li	_	PN
-r.5.2	{d}nanna-zi-sza3-gal2	_	PN
-eo.1.1	{disz}{d}suen-a-hu-szu	_	PN
-eo.2.2	sza-at-{d}gibil6	_	PN
-eo.7.2	a-mur-i-lu-su2	_	PN
-er.3.2	bur-ia	_	PN
-er.3.4	sa-li	_	PN
-er.5.2	{d}nanna-zi-sza3-gal2	_	PN
-s1.1.1	{d}suen-a-bu-szu	Suenabuszu[1]	PN
-s1.2.2	za-pa-ti	_	PN
+P509636
+{disz}{d}suen-a-hu-szu
+sza-at-{d}gibil6
+a-mur-i-lu-su2
+bur-ia
+sa-li
+{d}nanna-zi-sza3-gal2
+{disz}{d}suen-a-hu-szu
+sza-at-{d}gibil6
+a-mur-i-lu-su2
+bur-ia
+sa-li
+{d}nanna-zi-sza3-gal2
+{d}suen-a-bu-szu
+za-pa-ti
+
+gan-gan-e3
+gan-gan-e3
+
+NONE
+
+NONE
+

@@ -1,16 +1,25 @@
-o.1.1	{disz}{d}suen-sze-mi	_	PN
-o.6.1	um-mi-he-pa2-at	_	PN
-o.7.1	in-szi-sa10	i-nn-szi[-n]-sa[pay_for][-ø][-a]	PN
-o.11.1	in-pa3	i-n-pad[name][-ø]	PN
-r.1.2	ia-ah-zi-be2-el3	_	PN
-r.2.2	isz-me-{d}suen	_	PN
-r.3.2	szu-la-ra-ak	_	PN
-r.4.2	na-nu-szu-um	_	PN
-r.5.2	za-x-la-nu	_	PN
-r.6.2	ku-nu-um	_	PN
-r.7.2	nu-ur2-ia	_	PN
-er.1'.2	isz-me-{d}suen	_	PN
-er.2'.2	szu-la-ra-ak	_	PN
-er.3'.2	x-x-x-x	_	PN
-er.4'.2	ku-nu-um	_	PN
-er.5'.2	nu-ur2-ia	_	PN
+P509633
+{disz}{d}suen-sze-mi
+li-li-lum
+um-mi-he-pa2-at
+in-szi-sa10
+in-pa3
+ia-ah-zi-be2-el3
+isz-me-{d}suen
+szu-la-ra-ak
+na-nu-szu-um
+za-x-la-nu
+ku-nu-um
+nu-ur2-ia
+isz-me-{d}suen
+szu-la-ra-ak
+x-x-x-x
+ku-nu-um
+nu-ur2-ia
+
+NONE
+
+NONE
+
+NONE
+

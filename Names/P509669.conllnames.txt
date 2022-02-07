@@ -1,10 +1,19 @@
-o.1.2	gu4-ab2	_	PN
-o.3.4	amar-ga	_	PN
-o.5.2	la-lum	_	PN
-r.1'.2	x-x-x-x	_	PN
-eo.1.2	gu4-ab2	_	PN
-eo.3.4	amar-ga	_	PN
-eo.5.2	la-lum	_	PN
-er.1'.2	x-x-x-x	_	PN
-s1.1.1	la-lu-um	_	PN
-s1.2.2	sa-al-lum	_	PN
+P509669
+gu4-ab2
+amar-ga
+la-lum
+x-x-x-x
+gu4-ab2
+amar-ga
+la-lum
+x-x-x-x
+la-lu-um
+sa-al-lum
+
+sze-sag11-ku5
+sze-sag11-ku5
+
+NONE
+
+NONE
+
