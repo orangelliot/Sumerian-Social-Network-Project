@@ -27,7 +27,7 @@ if len(sys.argv) == 4:
 
 # try to read the paths
 try:
-    data = load_workbook(data_path)
+    data = load_workbook(data_path, read_only=True)
 except:
     print("Problem with opening file: " + data_path)
     exit(0)
@@ -58,8 +58,10 @@ for row in data_sheet.values:
             # add new key
             dictionary[name] = []
         # add tablet to name entry if it isn't there already
-        if tablet_id not in dictionary[name]:
+        if ((tablet_id not in dictionary[name]) and (name != "...")):
             dictionary[name].append(tablet_id)
+
+data.close()
 
 # output data to file
 output = Workbook()
@@ -80,4 +82,4 @@ for key in dictionary.keys():
     current_row += 1
 
 # save sheet
-output.save(sys.argv[2])
+output.save(filename = sys.argv[2])
