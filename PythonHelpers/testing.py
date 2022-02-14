@@ -1,17 +1,15 @@
-import openpyxl
-import os
+import networkx as nx
+import matplotlib.pyplot as plt
 
-print('\n' + os.getcwd() + '\n')
-print(os.listdir())
+G = nx.Graph()
 
-wb = openpyxl.load_workbook(filename= 'test.xlsx')
-ws = wb.worksheets[0]
+# make a new spreadsheet where each tablet has all tablet relations on the same row
+# formatted like: [tablet][relatedTablet][numRelations][relatedTablet][numRelations][...]
+# use that sheet to generate an edgeList
+edgeList = [(1, 2, 0.5), (2, 3, 0.8), (1, 4, 0.2), (2, 4, 0.9), (5, 3, 0.7), (3, 4, 0.3)]
 
-print(ws['A1'].value)
-
-ws['A2'].value = 'beep'
-ws.cell(2,2).value = 'boop'
-
-print(ws['A2'].value)
-
-wb.save('test.xlsx')
+G.add_weighted_edges_from(edgeList)
+f = plt.figure()
+subax1 = f.add_subplot(121)
+nx.draw(G, ax=subax1)
+f.savefig("graph.png")
