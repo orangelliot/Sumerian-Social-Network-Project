@@ -12,16 +12,22 @@
 import openpyxl
 import os
 from nameGrabber import NameGrabber
+from yearGrabber import YearGrabber
 
 tabulatedData = openpyxl.load_workbook(filename = 'tabulatedData.xlsx')
 wsNames = tabulatedData.worksheets[0]
+wsYears = tabulatedData.worksheets[1]
 path = os.getcwd() + '/Translated/'
 
-getNames = True
-getDates = False
+getNames = False
+getYears = True
 
 if getNames:
     n = NameGrabber(wsNames, path)
     n.namesToSheet()
+
+if getYears:
+    y = YearGrabber(wsYears, path)
+    y.yearsToSheet()
 
     tabulatedData.save('tabulatedData.xlsx')

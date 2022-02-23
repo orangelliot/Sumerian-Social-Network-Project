@@ -11,11 +11,11 @@ import os
 class NameGrabber(object):
     
     def __init__(self, sheet, path):
-            self.sheet = sheet
-            self.path = path
+        self.sheet = sheet
+        self.path = path
 
     def namesToSheet(self):
-        tablets = os.listdir(os.getcwd() + '/Translated')
+        tablets = os.listdir(self.path)
         row = 2
         for tablet in tablets:
             #open each tablet
@@ -25,23 +25,23 @@ class NameGrabber(object):
             #name the row after the tablet it contains
             self.sheet['A' + str(row)].value = tablet
             #start read
-            currentline = tab.readline()
+            currentLine = tab.readline()
             placeName = False
             #continue until end of tablet
-            while currentline != '':
+            while currentLine != '':
                 #split line around tab and tokenize
-                tokenline = currentline.split('\t')
-                if(currentline.find("[place]") != -1):
+                tokenLine = currentLine.split('\t')
+                if(currentLine.find("[place]") != -1):
                     placeName = True
-                if(currentline.find("\tPN\n") != -1):
+                if(currentLine.find("\tPN\n") != -1):
                     if(placeName):
                         #catch placeNames and dont add them to the spreadsheet
                         placeName = False
                     else:
                         #if PN then add to spreadsheet
-                        self.sheet.cell(row, 3 + nameCount).value = tokenline[1]
+                        self.sheet.cell(row, 3 + nameCount).value = tokenLine[1]
                         nameCount += 1
-                currentline = tab.readline()
+                currentLine = tab.readline()
             self.sheet.cell(row, 2).value = nameCount
             #increment to next line of spreadsheet
             row += 1
