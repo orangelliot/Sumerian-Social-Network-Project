@@ -20,10 +20,13 @@ class YearGrabber(object):
             while currentLine != '':
                 if(currentLine.find("[year]") != -1):
                     currentLine = tab.readline()
-                    while currentLine != '' and currentLine.find("[year]") == -1:
+                    end = False
+                    while currentLine != '' and not end:
                         buf += re.split(' |\t', currentLine)[1]
                         buf += ' '
+                        end = (-1 != currentLine.find("\tV"))
                         currentLine = tab.readline()
+                    end = False
                     #write buf to excel
                     self.sheet.cell(row, 3 + yearCount).value = buf
                     buf = "mu "
