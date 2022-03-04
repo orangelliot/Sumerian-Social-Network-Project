@@ -13,21 +13,31 @@ import openpyxl
 import os
 from nameGrabber import NameGrabber
 from yearGrabber import YearGrabber
+from yearMatcher import YearMatcher
 
 tabulatedData = openpyxl.load_workbook(filename = 'tabulatedData.xlsx')
-wsNames = tabulatedData.worksheets[0]
-wsYears = tabulatedData.worksheets[1]
+yearNames = openpyxl.load_workbook(filename = 'yearNames.xlsx')
+wsTabletsNNames = tabulatedData.worksheets[0]
+wsTabletsNYears = tabulatedData.worksheets[1]
+wsTabletsNYearsBest = tabulatedData.worksheets[2]
+wsYearNames = yearNames.worksheets[0]
 path = os.getcwd() + '/Translated/'
 
 getNames = False
-getYears = True
+getYears = False
+findBestYears = True
+
 
 if getNames:
-    n = NameGrabber(wsNames, path)
+    n = NameGrabber(wsTabletsNNames, path)
     n.namesToSheet()
 
 if getYears:
-    y = YearGrabber(wsYears, path)
+    y = YearGrabber(wsTabletsNYears, path)
     y.yearsToSheet()
 
-    tabulatedData.save('tabulatedData.xlsx')
+if findBestYears:
+    b = YearMatcher(wsYearNames, wsTabletsNYears, wsTabletsNYearsBest)
+    b.bestYearsToSheet()
+
+tabulatedData.save('tabulatedData.xlsx')
