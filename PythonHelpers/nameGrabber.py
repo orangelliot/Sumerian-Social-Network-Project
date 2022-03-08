@@ -7,23 +7,21 @@
 #        then run namesToSheet.
 
 import os
+from SQLfuncs import SQLfuncs
 
 class NameGrabber(object):
     
-    def __init__(self, sheet, path):
-        self.sheet = sheet
+    def __init__(self, path):
         self.path = path
 
-    def namesToSheet(self):
+    def namesToDB(self):
+        db = SQLfuncs('localhost', 'elliot', 'password')
         tablets = os.listdir(self.path)
-        row = 2
-        for tablet in tablets:
+        for tabid in tablets:
             #open each tablet
-            tab = open(self.path + tablet, 'r', encoding='utf-8')
+            tab = open(self.path + tabid, 'r', encoding='utf-8')
             #track number of names
             nameCount = 0
-            #name the row after the tablet it contains
-            self.sheet['A' + str(row)].value = tablet
             #start read
             currentLine = tab.readline()
             placeName = False
@@ -35,13 +33,10 @@ class NameGrabber(object):
                     placeName = True
                 if(currentLine.find("\tPN\n") != -1):
                     if(placeName):
-                        #catch placeNames and dont add them to the spreadsheet
+                        #catch placeNames and dont add them to the database
                         placeName = False
                     else:
-                        #if PN then add to spreadsheet
-                        self.sheet.cell(row, 3 + nameCount).value = tokenLine[1]
+                        #if PN then add to sql
+                        db.addNameToTab(tokenLine[1], tabid)
                         nameCount += 1
                 currentLine = tab.readline()
-            self.sheet.cell(row, 2).value = nameCount
-            #increment to next line of spreadsheet
-            row += 1

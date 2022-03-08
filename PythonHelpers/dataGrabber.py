@@ -23,14 +23,13 @@ wsTabletsNYearsBest = tabulatedData.worksheets[2]
 wsYearNames = yearNames.worksheets[0]
 path = os.getcwd() + '/Translated/'
 
-getNames = False
+getNames = True
 getYears = False
-findBestYears = True
-
+findBestYears = False
 
 if getNames:
-    n = NameGrabber(wsTabletsNNames, path)
-    n.namesToSheet()
+    n = NameGrabber(path)
+    n.namesToDB()
 
 if getYears:
     y = YearGrabber(wsTabletsNYears, path)
