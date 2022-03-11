@@ -40,8 +40,13 @@ try:
             cursor.execute(createCDLIyears)
             cursor.execute(createTabids)
             tablets = os.listdir(os.getcwd() + '/Translated/')
+            numTablets = len(tablets)
+            currentTablet = 0
             for tabid in tablets:
-                cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid + '\')')
+                currentTablet += 1
+                print("%d/%d" % (currentTablet, numTablets), end="\r")
+                cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid[0:7] + '\')')
+            print("%d/%d" % (currentTablet, numTablets))
             cursor.execute(createRawnames)
             cursor.execute(createRawyears)
         
