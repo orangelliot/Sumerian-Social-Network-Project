@@ -34,16 +34,16 @@ class Person{
 
     //Getters
     string getName(){
-      return name;
+      return this-> name;
     }
     char getSex(){
-      return sex;
+      return this-> sex;
     }
     vector <Person> getParents(){
-      return parents;
+      return this-> parents;
     }
     vector <Person> getChildren(){
-      return children;
+      return this-> children;
     }
 };
 
