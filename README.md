@@ -3,6 +3,7 @@
 # File Structure
 ``` 
 |__ Dataset --> Raw data that is being used
+|__ FamilyTree --> Contains all the code that is being used to construct family trees from the data
 |__ Python/ --> Contains all the python scripts this project uses
         |__ Core
                 |__ Database --> Code that creates and queries the database
