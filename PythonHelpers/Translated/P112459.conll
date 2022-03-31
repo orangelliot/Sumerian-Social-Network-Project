@@ -1,0 +1,17 @@
+#new_text=P112459
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	{d}suen-ga-szi-id	_	PN
+o.2.1	nita	nita[male]	N
+o.2.2	kal-ga	kalag[strong]-a	V
+o.3.1	lugal	lugal[king]	N
+o.3.2	unu{ki}-ga	Unug[1]-ak[-ak][-ø]	SN
+o.4.1	lugal	lugal[king]	N
+o.4.2	am-na-nu-um	_	GN
+o.5.1	u2-a	_	PN
+o.5.2	e2-an-na	_	N
+o.6.1	u4	ud[day]	N
+o.6.2	e2-an-na	_	N
+r.1.1	mu-du3-a	mu[-n]-du[-ø]	V
+r.2.1	e2-gal	egal[palace][-ak][-'a]	N
+r.3.1	nam-lugal-la-ka-ni	_	PN
+r.4.1	mu-du3	mu[-n]-du[build][-ø]	V

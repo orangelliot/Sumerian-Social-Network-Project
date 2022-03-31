@@ -1,0 +1,12 @@
+#new_text=P274306
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	iti	iti[month]	N
+o.1.2	ezem-{d}li9-si4	_	PN
+o.2.1	mu	mu[year]	N
+o.2.2	e2	e[house]	N
+o.2.3	{d}szara2	Szara[1][-ak]	DN
+o.2.4	ba-du3	ba-du[build][-ø]	V
+s1.1.1	ur-{d}nin-mar{ki}	_	PN
+s1.2.1	dub-sar	dubsar[scribe]	N
+s1.3.1	dumu	dumu[child]	N
+s1.3.2	lugal-uszumgal	_	N

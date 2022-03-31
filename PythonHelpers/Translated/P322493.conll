@@ -1,0 +1,16 @@
+#new_text=P322493
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	...	_[_]	PN
+o.2.1	4(disz)	4(disz)[one]	NU
+o.2.2	...	_[_]	PN
+o.3.1	2(disz)	2(disz)[one]	NU
+o.3.2	...	_[_]	PN
+o.4.1	1(disz)	1(disz)[one]	NU
+o.4.2	...	_[_]	PN
+r.1.1	ki	ki[place]	N
+r.1.2	a-na-ah-i3-li2-ta	_	PN
+r.2.1	ba-zi	ba-zig[expend][-ø]	V
+r.3.1	iti	iti[month]	N
+r.3.2	...	_[_]	PN
+r.4.1	mu	mu[year]	N
+r.4.2	...	_[_]	PN

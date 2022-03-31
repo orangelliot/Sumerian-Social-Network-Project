@@ -1,0 +1,13 @@
+#new_text=P227061
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	i7	id[river]	N
+o.1.2	e-UR-tum-sze3	_	WN
+o.2.1	...	_[_]	PN
+o.2.2	a2	a[time]	N
+o.2.3	IM	_	 
+o.2.4	mer-ra-bi	_	N
+o.3.1	...	_[_]	PN
+o.3.2	i7	id[river]	N
+o.3.3	e-UR-tum-ta	_	WN
+o.4.1	...	_[_]	PN
+o.4.2	ur	_	N

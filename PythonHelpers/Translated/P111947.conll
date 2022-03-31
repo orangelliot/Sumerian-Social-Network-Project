@@ -1,0 +1,38 @@
+#new_text=P111947
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	eme6	_	N
+o.2.1	i-ti	_	PN
+o.3.1	u-bar-um	_	PN
+o.3.2	ha-za-num2	_	PN
+o.4.1	i-szar-pa2-dan	_	PN
+o.5.1	i-sza-am	_	PN
+r.1.1	sa10-bi	_	N
+r.2.1	sze-bi	sze[barley]-bi[-ø]	N
+r.2.2	6(asz)	6(asz)[one]	NU
+r.2.3	gur	gur[unit]	N
+r.3.1	igi	igi[eye][-ø]	N
+r.3.2	NE-ni-a	_	 
+r.4.1	igi	igi[eye][-ø]	N
+r.4.2	a-bu-um-dingir	_	PN
+r.5.1	igi	igi[eye][-ø]	N
+r.5.2	igi-sa6-sa6	Igisasa[1]	PN
+r.6.1	igi	igi[eye][-ø]	N
+r.6.2	du-u2-a	_	V
+l.1.1	{gesz}kum	_	N
+l.1.2	eb2-la	_	PN
+eo.1.1	eme6	_	N
+eo.2.1	i-ti	_	PN
+eo.3.1	u-bar-um	_	PN
+eo.3.2	ha-za-num2	_	PN
+eo.3.3	gesz-bar-x-x	_	 
+eo.4.1	i-szar-pa2-dan	_	PN
+eo.5.1	i-sza-am	_	PN
+er.1.1	si-im-su3	_	V
+er.2.1	sze-bi	sze[barley]-bi[-ø]	N
+er.2.2	6(asz)	6(asz)[one]	NU
+er.2.3	gur	gur[unit]	N
+er.2.4	sze	sze[barley]	N
+er.3.1	igi	igi[eye][-ø]	N
+er.3.2	NE-ni-a	_	 
+er.4.1	igi	igi[eye][-ø]	N
+er.4.2	igi-sa6-sa6	Igisasa[1]	PN

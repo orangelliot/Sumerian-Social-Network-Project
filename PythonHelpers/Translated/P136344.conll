@@ -1,0 +1,25 @@
+#new_text=P136344
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	nin-{d}lamma-mu	_	PN
+o.2.1	u3	u[and]	CNJ
+o.2.2	|PU3.SZA|-{d}suen	_	PN
+o.3.1	ki	ki[place]	N
+o.3.2	ra-ad-du-e	_	V
+o.4.1	zum-ma-tum	_	N
+o.4.2	nin-a-ni-ir	_	PN
+o.5.1	in-na-ba	_	N
+o.6.1	igi	igi[eye][-ø]	N
+o.6.2	lu2-kal-la-sze3	_	PN
+r.1.1	igi	igi[eye][-ø]	N
+r.1.2	i-szar-lu-ba-li2-it-sze3	_	V
+r.2.1	u3	u[and]	CNJ
+r.2.2	igi	igi[eye][-ø]	N
+r.2.3	{d}szara2-i3-sa6-sze3	_	DN
+r.3.1	mu	mu[year]	N
+r.3.2	lugal-bi	_	N
+r.4.1	in-pa3	i-n-pad[name][-ø]	PN
+r.5.1	iti	iti[month]	N
+r.5.2	ezem-{d}szul-gi	Ezemszulgir[1][-'a]	MN
+r.6.1	mu	mu[year]	N
+r.6.2	{d}szu-{d}suen	Szusuen[1]	RN
+r.6.3	lugal	lugal[king]	N
