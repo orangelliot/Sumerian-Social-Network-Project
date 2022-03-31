@@ -1,21 +1,14 @@
-# Elliot Fisk
-# Feb 2022
-# Program to get names from tablets in self.path and print them
-# into self.sheet
-
-# Usage: Import to grabber and create new object with sheet and path
-#        then run namesToSheet.
+# Elliot Fisk, collect names
 
 import os
 from SQLfuncs import SQLfuncs
-
 class NameGrabber(object):
     
     def __init__(self, path):
         self.path = path
 
     def namesToDB(self):
-        db = SQLfuncs('localhost', 'elliot', 'password')
+        db = SQLfuncs('10.0.0.108', 'elliot', 'password')
         tablets = os.listdir(self.path)
         for tabid in tablets:
             #open each tablet

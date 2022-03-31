@@ -1,5 +1,4 @@
-# Elliot D Fisk
-# Feb 2022
+# Elliot Fisk
 # Program to handle all operations that grab data from raw translated
 # tablets and put it into a shared excel spreadsheet
 
