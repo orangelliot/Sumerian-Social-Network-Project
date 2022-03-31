@@ -2,5 +2,6 @@
 
 # File Structure
 '''
-|__ PythonHelpers/ --> File containing python helper programs to modify and generate data 
+|__ Names/ 
+|__ Python/ --> Contains all the python scripts this project uses 
 '''
