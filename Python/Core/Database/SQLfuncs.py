@@ -35,3 +35,13 @@ class SQLfuncs(object):
             print('Added year successfuly')
         except Error as e:
             print(f"The error '{e}' occurred")
+
+    def getAttribute(self, relation, attribute):
+        cursor = self.connection.cursor()
+        getAttributeQuery = 'SELECT ' + attribute + ' FROM ' + relation + ';'
+        try:
+            data = cursor.execute(getAttributeQuery)
+            print('Fetched data successfuly')
+            return data
+        except Error as e:
+            print(f"The error '{e}' occurred")

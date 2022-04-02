@@ -1,7 +1,7 @@
 # Elliot Fisk, collect names
 
 import os
-from SQLfuncs import SQLfuncs
+from Database.SQLfuncs import SQLfuncs
 class NameGrabber(object):
     
     def __init__(self, path):
