@@ -1,0 +1,22 @@
+#new_text=P200684
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	4(disz)	4(disz)[one]	NU
+o.1.2	ninda	ninda[bread]	N
+o.1.3	esz3	esz[shrine]	N
+o.2.1	sze-ba	szeba[ration]	N
+o.2.2	geme2	geme[female_worker]	N
+o.2.3	szu	szu[hand][-e]	N
+o.2.4	bar-sze3	_	V
+o.3.1	ki	ki[place]	N
+o.3.2	inim-{d}nanna-ta	_	PN
+o.4.1	ba-zi	ba-zig[expend][-ø]	V
+r.1.1	kiszib3	kiszib[seal]	N
+r.1.2	lu2-{d}nin-szubur	Luninszubur[1][-ra]	PN
+r.2.1	iti	iti[month]	N
+r.2.2	kin-{d}inanna	Kin-Inanna[1].[-’a]MN.L1	MN
+r.3.1	mu	mu[year]	N
+r.3.2	nin-dingir	_	PN
+r.3.3	{d}iszkur	_	DN
+r.3.4	masz2-e	masz[goat]-e	N
+r.3.5	i3-pa3	i-pad[find][-ø]	V
+s1.1.1	...	_[_]	PN

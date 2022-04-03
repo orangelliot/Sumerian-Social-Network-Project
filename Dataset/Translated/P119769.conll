@@ -1,0 +1,10 @@
+#new_text=P119769
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+o.1.1	...	_[_]	PN
+r.1'.1	iti	iti[month]	N
+r.1'.2	ezem-{d}szul-gi	Ezemszulgir[1][-'a]	MN
+r.2'.1	mu	mu[year]	N
+r.2'.2	e2	e[house]	N
+r.2'.3	|PU3.SZA|-da-gan	_	SN
+r.2'.4	ba-du3	ba-du[build][-ø]	V
+s1.1.1	...	_[_]	PN

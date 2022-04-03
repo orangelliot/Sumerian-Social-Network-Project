@@ -1,0 +1,22 @@
+#new_text=P227691
+# ID	FORM	SEGM	XPOSTAG	HEAD	DEPREL	MISC
+r.col1.1.1	gesz	gesz[tree]	N
+r.col1.1.2	gi-...	_	PN
+r.col1.2.1	gesz	gesz[tree]	N
+r.col1.2.2	gi-...	_	PN
+r.col1.3.1	gesz	gesz[tree]	N
+r.col1.3.2	zi-ir-...	_	 
+r.col1.4.1	gesz	gesz[tree]	N
+r.col1.4.2	ur-nu-...	_	PN
+r.col1.5.1	gesz	gesz[tree]	N
+r.col1.5.2	...	_[_]	PN
+r.col2.1.1	gesz	gesz[tree]	N
+r.col2.1.2	mud-geszimmar	_	V
+r.col2.2.1	gesz	gesz[tree]	N
+r.col2.2.2	ze2-na-geszimmar	_	V
+r.col2.3.1	...	_[_]	PN
+r.col2.3.2	zu2-geszimmar	_	PN
+r.col2.4.1	...	_[_]	PN
+r.col2.4.2	zu2-gu-la	_	N
+r.col2.5.1	...	_[_]	PN
+r.col2.5.2	zu2-gan-...	_	N
