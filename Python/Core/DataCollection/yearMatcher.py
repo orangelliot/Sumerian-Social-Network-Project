@@ -15,6 +15,7 @@ class YearMatcher(object):
         return SequenceMatcher(None, s1, s2).ratio()
 
     def findMatchingYear(self, yearName):
+        
         bestYear = ''
         row = 1
         similarityMetric = 0
