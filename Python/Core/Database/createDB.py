@@ -6,7 +6,7 @@ import os
 
 try:
     with connect(
-        host='localhost',
+        host='sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com',
         user=input('enter username: '),
         password=getpass('enter password: '),
     ) as connection:
@@ -36,12 +36,12 @@ try:
             FOREIGN KEY (tabid) REFERENCES tabids (tabid)
             );'''
         with connection.cursor() as cursor:
-            cursor.execute('DROP DATABASE sumeriantabdb;')
-            cursor.execute('CREATE DATABASE sumeriantabdb;')
-            cursor.execute('USE sumeriantabdb;')
+            cursor.execute('DROP DATABASE sumerianDB;')
+            cursor.execute('CREATE DATABASE sumerianDB;')
+            cursor.execute('USE sumerianDB;')
             cursor.execute(createCDLIyears)
             cursor.execute(createTabids)
-            tablets = os.listdir(os.getcwd() + '/Translated/')
+            tablets = os.listdir(os.getcwd() + '/Dataset/Translated/')
             numTablets = len(tablets)
             currentTablet = 0
             for tabid in tablets:
