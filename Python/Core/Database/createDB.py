@@ -8,7 +8,7 @@ try:
     with connect(
         host='sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com',
         user=input('enter username: '),
-        password=getpass('enter password: '),
+        password='2b928S#%',
     ) as connection:
         createCDLIyears = '''CREATE TABLE cdliyears (
             cdliname varchar(255) not null,
