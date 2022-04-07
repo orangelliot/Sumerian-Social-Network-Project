@@ -2,28 +2,34 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <filesystem>
 
 using namespace std;
+namespace fs = std::filesystem;
 
 class Person{
   //Constructors
   protected:
     string name;
-    char sex;
+    string profession;
+    vector <string> year;
     vector <Person> parents;
     vector <Person> children;
   public:
-    Person(string name, char sex){
+    Person(string name){
       this-> name = name;
-      this-> sex = sex;
     }
 
     //Setters
     void setName(string name){
       this-> name = name;
     }
-    void setSex(char sex){
-      this-> sex = sex;
+    void setProfession(string profession){
+      this-> profession = profession;
+    }
+    void setYear(string year){
+      this-> year.push_back(year);
     }
     void addParents(Person parent){
       this-> parents.push_back(parent);
@@ -36,8 +42,11 @@ class Person{
     string getName(){
       return this-> name;
     }
-    char getSex(){
-      return this-> sex;
+    string getProfession(){
+      return this-> profession;
+    }
+    vector <string> getYear(){
+      return this-> year;
     }
     vector <Person> getParents(){
       return this-> parents;
@@ -47,6 +56,35 @@ class Person{
     }
 };
 
-int main(int argc, char *argv[]){
+vector <Person> makeTree(vector <Person> list){
+  string path = "";
+  for(auto & entry : fs::directory_iterator(path)){
 
+  }
+
+  return list;
+}
+
+void makeCSV(vector <Person> list){
+  ofstream csv;
+  csv.open("Tree.csv");
+
+  csv << "Name,Profession,Year,Children,Parents" << endl;
+
+  for(Person n : list){
+
+  }
+
+  csv.close();
+}
+
+int main(int argc, char *argv[]){
+  cout << "Making Tree..." << endl;
+  vector <Person> listOfPeople;
+  listOfPeople = makeTree(listOfPeople);
+  cout << "Finished Tree" << endl;
+  
+  cout << "Making CSV..." << endl;
+  makeCSV(listOfPeople);
+  cout << "Finished CSV" << endl;
 }
