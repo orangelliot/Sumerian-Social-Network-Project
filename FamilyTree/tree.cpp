@@ -57,7 +57,7 @@ class Person{
 };
 
 vector <Person> makeTree(vector <Person> list){
-  string path = "";
+  string path = "../Dataset/Translated";
   for(auto & entry : fs::directory_iterator(path)){
 
   }
@@ -70,6 +70,7 @@ void makeCSV(vector <Person> list){
   csv.open("Tree.csv");
 
   csv << "Name,Profession,Year,Children,Parents" << endl;
+  csv << "\"Name1, Name2\",,,," << endl;
 
   for(Person n : list){
 
@@ -81,9 +82,9 @@ void makeCSV(vector <Person> list){
 int main(int argc, char *argv[]){
   cout << "Making Tree..." << endl;
   vector <Person> listOfPeople;
-  listOfPeople = makeTree(listOfPeople);
+  //listOfPeople = makeTree(listOfPeople);
   cout << "Finished Tree" << endl;
-  
+
   cout << "Making CSV..." << endl;
   makeCSV(listOfPeople);
   cout << "Finished CSV" << endl;
