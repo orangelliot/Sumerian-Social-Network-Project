@@ -14,7 +14,7 @@ int main(int argc, char *argv[]){
 
   csv << "TabletID" << endl;
 
-  string path = "../Dataset/Translated";
+  string path = "../../Dataset/Translated";
   for(auto & entry : fs::directory_iterator(path)){
 
   }
