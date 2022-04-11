@@ -14,7 +14,7 @@ class SQLfuncs(object):
             )
             print('Connection to sumeriantabdb successful')
         except Error as e:
-            print(f"The error \'{e}\' occurred")
+            print(f"The error '{e}' occurred")
 
     def addNameToTab(self, name, tabid):
         cursor = self.connection.cursor()
