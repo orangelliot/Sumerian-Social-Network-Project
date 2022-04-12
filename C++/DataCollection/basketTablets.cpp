@@ -26,8 +26,8 @@ int main(int argc, char *argv[]){
     while(tablet >> word){
       if(word == "pisan-dub-ba"){
         fileName = entry.path();
-        fileName = fileName.substr(24,37);
-        tabletID = fileName.substr(0,6);
+        fileName = fileName.substr(25,37);
+        tabletID = fileName.substr(0,7);
         csv << fileName << "," << tabletID << endl;
         break;
       }
