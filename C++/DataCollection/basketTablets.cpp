@@ -1,3 +1,5 @@
+//g++ -std=c++17 -o basketTablets.out basketTablets.cpp
+
 #include <stdlib.h>
 #include <string>
 #include <vector>
@@ -12,16 +14,21 @@ int main(int argc, char *argv[]){
   ifstream tablet;
   ofstream csv;
   csv.open("basketTablets.csv");
-  csv << "TabletID" << endl;
+  csv << "FileName,TabletID" << endl;
 
-  string path = "../../Dataset/Translated";
+  string path = "../../Dataset/Translated/";
   for(auto & entry : fs::directory_iterator(path)){
     tablet.open(entry.path().c_str());
 
     string word;
+    string fileName;
+    string tabletID;
     while(tablet >> word){
       if(word == "pisan-dub-ba"){
-        csv << entry.path() << endl;
+        fileName = entry.path();
+        fileName = fileName.substr(24,37);
+        tabletID = fileName.substr(0,6);
+        csv << fileName << "," << tabletID << endl;
         break;
       }
     }
