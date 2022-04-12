@@ -1,5 +1,3 @@
-//g++ -std=c++17 -o basketTablets.out basketTablets.cpp
-
 #include <stdlib.h>
 #include <string>
 #include <vector>
@@ -13,17 +11,19 @@ namespace fs = std::filesystem;
 int main(int argc, char *argv[]){
   ifstream tablet;
   ofstream csv;
-  csv.open("Tree.csv");
+  csv.open("basketTablets.csv");
   csv << "TabletID" << endl;
 
   string path = "../../Dataset/Translated";
   for(auto & entry : fs::directory_iterator(path)){
-    tablet.open(entry.path());
+    tablet.open(entry.path().c_str());
 
-    string line = "";
-    while(getline(tablet, line) != EOF){
-      //split string
-      //check split for pisan dub-ba
+    string word;
+    while(tablet >> word){
+      if(word == "pisan-dub-ba"){
+        csv << entry.path() << endl;
+        break;
+      }
     }
 
     tablet.close();
