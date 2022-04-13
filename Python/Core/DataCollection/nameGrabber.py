@@ -1,24 +1,27 @@
 # Elliot Fisk, collect names
 
 import os
+import threading
 from Database.SQLfuncs import SQLfuncs
 class NameGrabber(object):
     
-    
+    tabletsProcessed = 0
 
     def __init__(self, path):
         self.path = path
 
-    def namesToDB(self):
-        db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
+    def namesToDB(self, numThreads):
         tablets = os.listdir(self.path)
         numTablets = len(tablets)
-        currentTablet = 0
+        threadSize = numTablets/numThreads
+        for index in range(numThreads - 1):
+            th = threading.Thread(target=thread_function, args=(index,))
+
+    def thread_function(name, tablets, path):
+        db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
         for tabid in tablets:
-            print("%d/%d" % (currentTablet, numTablets), end="\r")
-            currentTablet += 1
             #open each tablet
-            tab = open(self.path + tabid, 'r', encoding='utf-8')
+            tab = open(path + tabid, 'r', encoding='utf-8')
             #start read
             currentLine = tab.readline()
             placeName = False
