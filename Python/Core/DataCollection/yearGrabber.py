@@ -1,19 +1,20 @@
 import os
 import re
+import threading
 from Database.SQLfuncs import SQLfuncs
 
 class YearGrabber(object):
     
     def __init__(self, path):
         self.path = path
+        self.tablets = os.listdir(self.path)
 
     def yearsToSheet(self):
-        db = SQLfuncs('10.0.0.108', 'elliot', 'password')
-        tablets = os.listdir(self.path)
+        db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
         row = 2
-        for tablet in tablets:
+        for tabid in self.tablets:
             #open each tablet
-            tab = open(self.path + tablet, 'r', encoding='utf-8')
+            tab = open(self.path + tabid, 'r', encoding='utf-8')
             currentLine = tab.readline()
             buf = "mu "
             yearCount = 0
@@ -28,7 +29,7 @@ class YearGrabber(object):
                         currentLine = tab.readline()
                     end = False
                     #add year to db
-                    SQLfuncs.addYearToTab(buf, tablet)
+                    SQLfuncs.addYearToTab(buf, tabid[0:7])
                     buf = "mu "
                     yearCount += 1
                     continue

@@ -10,9 +10,9 @@ class SQLfuncs(object):
                 host=hostname,
                 user=username,
                 password=userpassword,
-                database='sumeriantabdb'
+                database='sumerianDB'
             )
-            print('Connection to sumeriantabdb successful')
+            print('Connection to sumerian-social-network successful')
         except Error as e:
             print(f"The error '{e}' occurred")
 
@@ -22,7 +22,7 @@ class SQLfuncs(object):
         try:
             cursor.execute(addNameQuery)
             self.connection.commit()
-            print('Added name successfuly')
+            #print('Added name successfuly')
         except Error as e:
             print(f"The error '{e}' occurred")
 
@@ -32,7 +32,7 @@ class SQLfuncs(object):
         try:
             cursor.execute(addYearQuery)
             self.connection.commit()
-            print('Added year successfuly')
+            #print('Added year successfuly')
         except Error as e:
             print(f"The error '{e}' occurred")
 

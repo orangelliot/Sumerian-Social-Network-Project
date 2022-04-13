@@ -46,7 +46,8 @@ try:
             currentTablet = 0
             for tabid in tablets:
                 currentTablet += 1
-                print("%d/%d" % (currentTablet, numTablets), end="\r")
+                if((currentTablet % 500) == 0):
+                    print("%d/%d" % (currentTablet, numTablets), end="\r")
                 cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid[0:7] + '\')')
             print("%d/%d" % (currentTablet, numTablets))
             cursor.execute(createRawnames)
