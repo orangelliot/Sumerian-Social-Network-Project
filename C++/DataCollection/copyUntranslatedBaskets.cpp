@@ -1,0 +1,35 @@
+//g++ -std=c++17 -o copyUntranslatedBaskets.out copyUntranslatedBaskets.cpp
+
+#include <stdlib.h>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
+
+using namespace std;
+namespace fs = std::filesystem;
+
+int main(int argc, char *argv[]){
+  ifstream csv;
+  csv.open("../../Dataset/basketTablets.csv");
+
+  string fromPath = "../../Dataset/Untranslated/";
+  string toPath = "../../Dataset/UntranslatedBasketTablets/";
+  string fileName;
+
+  while(getline(csv, fileName)){
+
+    if(fileName.substr(0,1) == "P"){
+      fileName = fileName.substr(0, 7);
+      fromPath = fromPath + fileName;
+      toPath = toPath + fileName + "basket" + ".atf";
+
+      std::filesystem::copy_file(fromPath, toPath);
+
+      fromPath = "../../Dataset/Translated/";
+      toPath = "../../Dataset/TranslatedBasketTablets/";
+    }
+  }
+
+  csv.close();
+}
