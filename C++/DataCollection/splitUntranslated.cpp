@@ -23,7 +23,6 @@ int main(int argc, char *argv[]){
       tablet.close();
       file = path + line.substr(1, 8) + ".atf";
       tablet.open(file);
-      count++;
     }
 
     tablet << line << endl;
