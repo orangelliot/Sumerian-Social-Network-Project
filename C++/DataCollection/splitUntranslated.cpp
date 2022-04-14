@@ -18,16 +18,11 @@ int main(int argc, char *argv[]){
 
   string line;
   string file;
-  int count = 0;
   while(getline(untranslated, line)){
     if(line.length() > 9 && line.substr(0,2) == "&P"){
       tablet.close();
       file = path + line.substr(1, 7) + ".atf";
       tablet.open(file);
-      count++;
-    }
-    else if(count == 4){
-      break;
     }
 
     tablet << line << endl;
