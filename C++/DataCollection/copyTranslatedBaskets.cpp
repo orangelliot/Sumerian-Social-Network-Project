@@ -1,4 +1,4 @@
-//g++ -std=c++17 -o copyTranslatedBasket.out copyTranslatedBasket.cpp
+//g++ -std=c++17 -o copyTranslatedBaskets.out copyTranslatedBaskets.cpp
 
 #include <stdlib.h>
 #include <string>
