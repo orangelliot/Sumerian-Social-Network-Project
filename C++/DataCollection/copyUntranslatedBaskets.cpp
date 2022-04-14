@@ -21,13 +21,13 @@ int main(int argc, char *argv[]){
 
     if(fileName.substr(0,1) == "P"){
       fileName = fileName.substr(0, 7);
-      fromPath = fromPath + fileName;
+      fromPath = fromPath + fileName + ".atf";
       toPath = toPath + fileName + "basket" + ".atf";
 
       std::filesystem::copy_file(fromPath, toPath);
 
-      fromPath = "../../Dataset/Translated/";
-      toPath = "../../Dataset/TranslatedBasketTablets/";
+      fromPath = "../../Dataset/Untranslated/";
+      toPath = "../../Dataset/UntranslatedBasketTablets/";
     }
   }
 
