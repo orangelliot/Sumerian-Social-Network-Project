@@ -19,13 +19,14 @@ int main(int argc, char *argv[]){
   string line;
   string file;
   while(getline(untranslated, line)){
-    if(line.length() < 9 && line.substr(0,2) == "&P"){
+    if(line.length() > 9 && line.substr(0,2) == "&P"){
       tablet.close();
       file = path + line.substr(1, 8) + ".atf";
       tablet.open(file);
+      count++;
     }
 
-    tablet << line;
+    tablet << line << endl;
   }
 
   tablet.close();
