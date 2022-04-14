@@ -1,0 +1,74 @@
+&P227697 = SLT 057 
+#atf: use lexical 
+#link: def A = Q000047 
+#link: def B = Q000001 
+@tablet 
+@obverse 
+1. munus# da?-x-x-la 
+2. munus# alan#? zu2# 
+3. munus# a-tar du11#-du11# 
+4. munus# x-NE#? du11#-du11#? 
+5. munus# x-x-x 
+$ traces 
+6. [x]-a 
+7. [...]-NE 
+8. [x]-kam?-ba 
+$ broken 
+@reverse 
+@column 1 
+1. ansze [x] 
+>>B 244 
+2. ansze [...] 
+>>B 245 
+3. ansze edin#-[...] 
+>>B 246 
+4. ansze nun-na 
+>>B 247 
+5. ansze gir2-nun-na 
+>>B 248 
+6. ansze si il#-la# 
+7. ansze [...] 
+8. ansze gesz?-a-[...] 
+9. ansze# gu2#-za 
+>>B 249 
+@column 2 
+1. musz [...] 
+2. musz {d}nerah 
+>>B 265 
+3. musz uszumgal 
+>>B 266 
+4. musz na4 
+>>B 267 
+5. musz a 
+>>B 268 
+6. musz sahar 
+>>B 269 
+7. musz {u2}|KI.KAL| 
+>>B 271 
+8. musz {u2}rib-ba 
+>>B 272 
+9. musz sag# 7(disz)-bi# 
+>>B 277 
+@column 3 
+1. [...]-nig# 
+>>B 287 
+2. [...]-ra 
+>>B 288 
+3. [...]-gi7? 
+>>B 289 
+4. ur-ki 
+>>B 290 
+5. ur-tur 
+>>B 291 
+6. ur-gug4 
+>>B 293 
+7. ur-gug4 ku5#-da# 
+>>B 294 
+8. az 
+>>B 295 
+9. pirig 
+>>B 296 
+10. nemurx(|PIRIG.TUR|)# 
+>>B 297 
+11. pirig# ka# du8#-a 
+>>B 298 
