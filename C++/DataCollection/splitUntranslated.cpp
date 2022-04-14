@@ -12,7 +12,7 @@ namespace fs = std::filesystem;
 int main(int argc, char *argv[]){
   ifstream untranslated;
   ofstream tablet;
-  untranslated.open("../../Dataset//ur3_untranslated.atf");
+  untranslated.open("../../Dataset/ur3_untranslated.atf");
 
   string path = "../../Dataset/Untranslated/";
 
