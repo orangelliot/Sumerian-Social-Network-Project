@@ -1,0 +1,28 @@
+Use of Globals:
+    *TODO*
+
+Header Standard:
+    Name of module
+    Date created
+    Original Author
+    Modification History:
+        Name of Modifier: Date of modification
+    ------------------------------------------
+    Synopsis
+
+Method Headers:
+    Name of method
+    -> parameter: type - description
+    -> ...
+    -> ...
+    <- return_value: type - description
+    description of method
+
+Naming Conventions:
+    CONSTANT_VARIABLES
+    GlobalVariables
+    localVariables
+
+Indentation and Spacing:
+    Inside of loops, methods, and multiple line declarations should be indented once more than the line above.
+    Spaces after commas between variables
