@@ -6,6 +6,7 @@
 	|__ DataCollection --> Code that mines/searches/and moves data
 	|__ FamilyTree --> Contains all the code that is being used to construct family trees from the dataset
 		|__ Data --> Contains code used to mine, sort, and filter data for the family tree
+		|__ Tree --> Contains code used to construct the family tree based off the data in Data/
 |__ Dataset --> Raw data that is being used
 	|__ Output --> Script outputs that analyze data in the Dataset directory
         |__ Translated --> The data set run through the translation pipeline
