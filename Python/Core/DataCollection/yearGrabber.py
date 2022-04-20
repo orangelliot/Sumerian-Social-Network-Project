@@ -7,12 +7,15 @@ class YearGrabber(object):
     
     def __init__(self, path):
         self.path = path
-        self.tablets = os.listdir(self.path)
+        self.tablets = os.listdir(path)
 
-    def yearsToSheet(self):
+    def yearsToDB(self):
         db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
-        row = 2
+        currentTablet = 0
+        numTablets = len(self.tablets)
         for tabid in self.tablets:
+            print("%d/%d" % (currentTablet, numTablets), end="\r")
+            currentTablet += 1
             #open each tablet
             tab = open(self.path + tabid, 'r', encoding='utf-8')
             currentLine = tab.readline()
@@ -29,10 +32,10 @@ class YearGrabber(object):
                         currentLine = tab.readline()
                     end = False
                     #add year to db
-                    SQLfuncs.addYearToTab(buf, tabid[0:7])
+                    db.addYearToTab(buf, tabid[0:7])
                     buf = "mu "
                     yearCount += 1
                     continue
                 currentLine = tab.readline()
-            row += 1
+        print("years finished")
                 

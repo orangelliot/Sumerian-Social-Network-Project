@@ -33,7 +33,7 @@ if getNames:
 
 if getYears:
     y = YearGrabber(path)
-    y.yearsToSheet()
+    y.yearsToDB()
 
 if findBestYears:
     b = YearMatcher()
