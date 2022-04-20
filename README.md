@@ -2,11 +2,17 @@
 
 # File Structure
 ``` 
-|__ C++ --> Henry's Stuff 
+|__ C++ --> Contains all the C++ scripts this project uses
+	|__ DataCollection --> Code that mines/searches/and moves data
+	|__ FamilyTree --> Contains all the code that is being used to construct family trees from the dataset
+		|__ Data --> Contains code used to mine, sort, and filter data for the family tree
 |__ Dataset --> Raw data that is being used
+	|__ Output --> Script outputs that analyze data in the Dataset directory
         |__ Translated --> The data set run through the translation pipeline
+	|__ TranslatedBasketTablets --> List of all basket tablets from Translated/
+	|__ Untranslated --> Separated list of all untranslated tablets from ur_3untranslated.atf
+	|__ UntranslatedBasketTablets --> List of all basket tablets from Untranslated/
         ur_3untranslated --> The complete raw data set
-|__ FamilyTree --> Contains all the code that is being used to construct family trees from the data
 |__ ProjectDocuments --> Contains the Project documentation
 |__ Python/ --> Contains all the python scripts this project uses
         |__ Core
