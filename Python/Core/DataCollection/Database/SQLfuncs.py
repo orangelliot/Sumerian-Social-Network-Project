@@ -28,7 +28,7 @@ class SQLfuncs(object):
 
     def addYearToTab(self, year, tabid):
         cursor = self.connection.cursor()
-        addYearQuery = 'INSERT INTO rawyears (year, tabid) VALUES (' + year + ', ' + tabid + ');'
+        addYearQuery = 'INSERT INTO rawyears (year, tabid) VALUES (\'' + year + '\', \'' + tabid + '\');'
         try:
             cursor.execute(addYearQuery)
             self.connection.commit()
