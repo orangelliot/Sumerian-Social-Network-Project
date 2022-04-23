@@ -10,7 +10,7 @@
 
 import openpyxl
 import os
-from threadedNameGrabber import ThreadedNameGrabber
+from multiNameGrabber import MultiNameGrabber
 from yearGrabber import YearGrabber
 from yearMatcher import YearMatcher
 
@@ -28,7 +28,7 @@ getYears = False
 findBestYears = False
 
 if getNames:
-    n = ThreadedNameGrabber(path)
+    n = MultiNameGrabber(path)
     n.namesToDB()
 
 if getYears:

@@ -2,43 +2,48 @@
 # Elliot Fisk, collect names
 
 import os
-import threading
+from multiprocessing import Process
+import multiprocessing
 from Database.SQLfuncs import SQLfuncs
-class ThreadedNameGrabber(object):
+class MultiNameGrabber(object):
 
-    threads = list()
+    processes = list()
     tabletsProcessed = 0
 
     def __init__(self, path):
         self.path = path
 
-    def namesToDB(self, numThreads):
+    def namesToDB(self):
+        numProc = multiprocessing.cpu_count()
         tablets = os.listdir(self.path)
         numTablets = len(tablets)
-        threadSize = numTablets/numThreads
+        threadSize = numTablets/numProc
         pos = 0
-        for index in range(numThreads - 1):
-            th = threading.Thread(target=self.thread_function, args=(self, index, tablets[pos, pos + threadSize], self.path))
-            self.threads.append(th)
+        for index in range(numProc - 1):
+            p = Process(target=self.thread_function, args=(self, index, tablets[pos, pos + threadSize],))
+            self.processes.append(p)
             pos += threadSize
-        th = threading.Thread(target=self.thread_function, args=(self, numThreads, tablets[pos, numTablets - 1], self.path))
-        self.threads.append(th)
+        p = Process(target=self.thread_function, args=(self, numProc, tablets[pos, numTablets - 1],))
+        self.processes.append(p)
 
-        for thread in self.threads:
-            thread.start()
+        for process in self.processes:
+            process.start()
 
         while self.tabletsProcessed <= numTablets:
             print("%d/%d" % (self.tabletsProcessed, numTablets), end="\r")
+
+        for process in self.processes:
+            process.join()
         
         
 
-    def thread_function(self, name, tablets, path):
+    def thread_function(self, name, tablets):
         self.tabletsProcessed = 0
         db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
         for tabid in tablets:
             self.tabletsProcessed += 1
             #open each tablet
-            tab = open(path + tabid, 'r', encoding='utf-8')
+            tab = open(self.path + tabid, 'r', encoding='utf-8')
             #start read
             currentLine = tab.readline()
             placeName = False
