@@ -23,8 +23,8 @@ from yearMatcher import YearMatcher
 
 path = os.getcwd() + '/Dataset/Translated/'
 
-getNames = True
-getYears = False
+getNames = False
+getYears = True
 findBestYears = False
 
 if getNames:
