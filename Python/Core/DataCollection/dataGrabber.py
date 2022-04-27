@@ -37,4 +37,4 @@ if getYears:
 
 if findBestYears:
     b = YearMatcher()
-    b.bestYearsToSheet()
+    b.bestYearsToDB()
