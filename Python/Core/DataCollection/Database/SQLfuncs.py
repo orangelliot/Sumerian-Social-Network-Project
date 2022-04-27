@@ -18,6 +18,7 @@ class SQLfuncs(object):
 
     def addNameToTab(self, name, tabid):
         cursor = self.connection.cursor()
+        year = self.sanitizeInput(name)
         addNameQuery = 'INSERT INTO rawnames (name, tabid) VALUES (\'' + name + '\', \'' + tabid + '\');'
         try:
             cursor.execute(addNameQuery)
@@ -28,6 +29,7 @@ class SQLfuncs(object):
 
     def addYearToTab(self, year, tabid):
         cursor = self.connection.cursor()
+        year = self.sanitizeInput(year)
         addYearQuery = 'INSERT INTO rawyears (year, tabid) VALUES (\'' + year + '\', \'' + tabid + '\');'
         try:
             cursor.execute(addYearQuery)
@@ -45,3 +47,12 @@ class SQLfuncs(object):
             return data
         except Error as e:
             print(f"The error '{e}' occurred")
+
+    def sanitizeInput(input):
+        out = ""
+        for i in range(len(input)):
+            out += input[i]
+            if input[i] == '\'':
+                out += '\''
+        return out
+                
