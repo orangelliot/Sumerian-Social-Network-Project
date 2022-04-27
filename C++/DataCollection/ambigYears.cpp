@@ -38,7 +38,7 @@ int main(int argc, char *argv[]){
         shulgi << tabletID << "," << word << endl;
         break;
       }
-      else if(word == "mu damar-dsuen lugal-e ša-aš-ru-umki a-ra2 2(diš)-kam u3 šu-ru-ud-hu-umki mu-hul"){
+      else if(word == "mu damar-dsuen lugal-e ša-aš-ru-umki a-ra2 2(diš)-kam u3 šu-ru-ud-hu-umki mu-hul"){
         fileName = entry.path();
         fileName = fileName.substr(25,37);
         tabletID = fileName.substr(0,7);
