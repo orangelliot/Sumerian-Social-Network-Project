@@ -10,7 +10,7 @@
 
 import openpyxl
 import os
-from multiNameGrabber import MultiNameGrabber
+from nameGrabber import NameGrabber
 from yearGrabber import YearGrabber
 from yearMatcher import YearMatcher
 
@@ -24,11 +24,11 @@ from yearMatcher import YearMatcher
 path = os.getcwd() + '/Dataset/Translated/'
 
 getNames = False
-getYears = True
-findBestYears = False
+getYears = False
+findBestYears = True
 
 if getNames:
-    n = MultiNameGrabber(path)
+    n = NameGrabber(path)
     n.namesToDB()
 
 if getYears:

@@ -4,7 +4,7 @@
 import os
 from multiprocessing import Process
 import multiprocessing
-from Database.SQLfuncs import SQLfuncs
+from Python.Core.DataCollection.Database.SQLfuncs import SQLfuncs
 class MultiNameGrabber(object):
 
     processes = list()
