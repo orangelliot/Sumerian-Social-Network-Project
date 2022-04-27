@@ -35,6 +35,12 @@ try:
             tabid char(128) not null,
             FOREIGN KEY (tabid) REFERENCES tabids (tabid)
             );'''
+        createBestyears = '''CREATE TABLE bestyears (
+            year varchar(255) not null,
+            tabid char(128) not null,
+            similarity double(16) not null,
+            FOREIGN KEY (tabid) REFERENCES tabids (tabid)
+            );'''
         with connection.cursor() as cursor:
             cursor.execute('DROP DATABASE sumerianDB;')
             cursor.execute('CREATE DATABASE sumerianDB;')
@@ -52,6 +58,7 @@ try:
             print("%d/%d" % (currentTablet, numTablets))
             cursor.execute(createRawnames)
             cursor.execute(createRawyears)
+            cursor.execute(createBestyears)
         
 
 except Error as e:
