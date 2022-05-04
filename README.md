@@ -1,5 +1,16 @@
 # Sumerian-Social-Network-Project
 
+connect to database: in mysql shell do
+	\connect root@sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com
+with password:
+	2b928S#%
+then do
+	\use sumerianDB
+to set default schema
+then do
+	\sql
+to enter sql query mode
+
 # File Structure
 ``` 
 |__ C++ --> Contains all the C++ scripts this project uses
