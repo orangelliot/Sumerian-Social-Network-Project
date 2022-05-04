@@ -7,7 +7,7 @@ import os
 try:
     with connect(
         host='sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com',
-        user=input('enter username: '),
+        user='root',
         password='2b928S#%',
     ) as connection:
         createCDLIyears = '''CREATE TABLE cdliyears (
@@ -38,26 +38,26 @@ try:
         createBestyears = '''CREATE TABLE bestyears (
             year varchar(255) not null,
             tabid char(128) not null,
-            similarity double(16) not null,
+            similarity float(16),
             FOREIGN KEY (tabid) REFERENCES tabids (tabid)
             );'''
         with connection.cursor() as cursor:
-            cursor.execute('DROP DATABASE sumerianDB;')
-            cursor.execute('CREATE DATABASE sumerianDB;')
+            #cursor.execute('DROP DATABASE sumerianDB;')
+            #cursor.execute('CREATE DATABASE sumerianDB;')
             cursor.execute('USE sumerianDB;')
-            cursor.execute(createCDLIyears)
-            cursor.execute(createTabids)
-            tablets = os.listdir(os.getcwd() + '/Dataset/Translated/')
-            numTablets = len(tablets)
-            currentTablet = 0
-            for tabid in tablets:
-                currentTablet += 1
-                if((currentTablet % 500) == 0):
-                    print("%d/%d" % (currentTablet, numTablets), end="\r")
-                cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid[0:7] + '\')')
-            print("%d/%d" % (currentTablet, numTablets))
-            cursor.execute(createRawnames)
-            cursor.execute(createRawyears)
+            #cursor.execute(createCDLIyears)
+            #cursor.execute(createTabids)
+            #tablets = os.listdir(os.getcwd() + '/Dataset/Translated/')
+            #numTablets = len(tablets)
+            #currentTablet = 0
+            #for tabid in tablets:
+            #    currentTablet += 1
+            #    if((currentTablet % 500) == 0):
+            #        print("%d/%d" % (currentTablet, numTablets), end="\r")
+            #    cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid[0:7] + '\')')
+            #print("%d/%d" % (currentTablet, numTablets))
+            #cursor.execute(createRawnames)
+            #cursor.execute(createRawyears)
             cursor.execute(createBestyears)
         
 

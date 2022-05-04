@@ -20,7 +20,7 @@ class MultiNameGrabber(object):
         threadSize = numTablets/numProc
         pos = 0
         for index in range(numProc - 1):
-            p = Process(target=self.thread_function, args=(self, index, tablets[pos, pos + threadSize],))
+            p = Process(target=self.thread_function, args=(self, index, tablets[pos, pos + threadSize - 1],))
             self.processes.append(p)
             pos += threadSize
         p = Process(target=self.thread_function, args=(self, numProc, tablets[pos, numTablets - 1],))

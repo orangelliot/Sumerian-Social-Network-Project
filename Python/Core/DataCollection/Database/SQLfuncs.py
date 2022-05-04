@@ -38,10 +38,10 @@ class SQLfuncs(object):
         except Error as e:
             print(f"The error '{e}' occurred")
 
-    def addBestYearToTab(self, bestYear, tabid):
+    def addBestYearToTab(self, bestYear, tabid, similarity):
         cursor = self.connection.cursor()
         bestYear = self.sanitizeInput(bestYear)
-        addBestYearQuery = 'INSERT INTO bestyears (year, tabid) VALUES (\'' + bestYear + '\', \'' + tabid +'\');'
+        addBestYearQuery = 'INSERT INTO bestyears (year, tabid, similarity) VALUES (\'' + bestYear + '\', \'' + tabid +'\', \'' + similarity +'\');'
         try:
             cursor.execute(addBestYearQuery)
             self.connection.commit()
@@ -49,13 +49,13 @@ class SQLfuncs(object):
         except Error as e:
             print(f"The error '{e}' occurred")
 
-    def getAttribute(self, relation, attribute):
+    def getAttribute(self, attribute, relation):
         cursor = self.connection.cursor()
         getAttributeQuery = 'SELECT ' + attribute + ' FROM ' + relation + ';'
         try:
-            data = cursor.execute(getAttributeQuery)
+            cursor.execute(getAttributeQuery)
             print('Fetched data successfuly')
-            return data
+            return cursor.fetchall()
         except Error as e:
             print(f"The error '{e}' occurred")
 
@@ -72,7 +72,7 @@ class SQLfuncs(object):
             print(f"The error '{e}' occurred")
 
 
-    def sanitizeInput(input):
+    def sanitizeInput(self, input):
         out = ""
         for i in range(len(input)):
             out += input[i]

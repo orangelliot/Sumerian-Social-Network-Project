@@ -28,22 +28,24 @@ class YearMatcher(object):
             curYear = self.catalog.cell(row, 1).value
         return bestYear, similarityMetric
 
-
     def bestYearsToDB(self):
         db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
         row = 1
-        years = db.getAttribute('rawyears', '*')
+        years = db.getAttribute("*", "rawyears")
         for tuple in years:
-            numYears = int(self.catalog.cell(row, 5).value)
             bestSimilarity = 0
             bestYear = 'start'
-            tablet = tuple[0]
-            year = tuple[1]
-            for i in range(numYears):
-                year, similarity = self.findMatchingYear(year)
+            year = tuple[0]
+            tablet = tuple[1]
+            #print("" + year + ", " + tablet + "\n")
+            print("%d/%d" % (row, len(years)), end="\r")
+            for i in range(self.catalog.cell(1,5).value):
+                tempYear, similarity = self.findMatchingYear(year)
                 if similarity >= bestSimilarity:
-                    bestYear = year
+                    bestYear = tempYear
                     bestSimilarity = similarity
-            db.addBestYearToTab(bestYear, tablet, bestSimilarity)
+            #print("QueryArgs: " + bestYear + ", " + tablet + ", " + str(bestSimilarity) + "\n")
+            bestSimilarity = bestSimilarity * 10.0
+            db.addBestYearToTab(bestYear, tablet, str(int(bestSimilarity)))
             row += 1
             

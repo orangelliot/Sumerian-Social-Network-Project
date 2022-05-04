@@ -17,15 +17,13 @@ from yearMatcher import YearMatcher
 #dataVis = openpyxl.load_workbook(filename = 'dataVis.xlsx')
 #wsTabLengthVis = dataVis.worksheets[0]
 
-#catalog = openpyxl.load_workbook(filename = 'catalog.xlsx')
-#wsYearNamesCat = catalog.worksheets[0]
-#wsPlaceNamesCat = catalog.worksheets[1]
-
 path = os.getcwd() + '/Dataset/Translated/'
+catalog = openpyxl.load_workbook(filename = 'catalog.xlsx')
+wsYearNames = catalog.worksheets[0]
 
 getNames = False
-getYears = False
-findBestYears = True
+getYears = True
+findBestYears = False
 
 if getNames:
     n = NameGrabber(path)
@@ -36,5 +34,5 @@ if getYears:
     y.yearsToDB()
 
 if findBestYears:
-    b = YearMatcher()
+    b = YearMatcher(wsYearNames)
     b.bestYearsToDB()
