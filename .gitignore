@@ -132,5 +132,5 @@ dmypy.json
 .pyre/
 
 # Project Specific Files and Folders
-Names/
-Translated/
+#Names/
+#Translated/
