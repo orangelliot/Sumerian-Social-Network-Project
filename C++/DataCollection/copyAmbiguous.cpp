@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
       }
 
       fromPath = "../../Dataset/Translated/";
-      toPath = "../../mu_sza3-asz-ru-um{ki}_ba-hul/";
+      toPath = "../../Dataset/mu_sza3-asz-ru-um{ki}_ba-hul/";
     }
   }
 
