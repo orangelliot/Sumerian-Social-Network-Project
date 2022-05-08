@@ -52,7 +52,7 @@ int main(){
     tabletID = result->getString(2);
     yearName = result->getString(1);
 
-    if(yearName == "mu sza3-asz-ru-um{ki} ba-hul"){
+    if(yearName == "mu sza3-asz-ru-um{ki} ba-hul "){
       abbrev << tabletID << "\t" << yearName << endl;
     }
   }
