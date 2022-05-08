@@ -41,16 +41,9 @@ int main(){
   prepState = connect->prepareStatement("SELECT * FROM rawyears;");
   result = prepState->executeQuery();
 
-  ofstream shulgi;
-  ofstream amar;
   ofstream abbrev;
-
-  shulgi.open("../../../Dataset/Output/AmbiguousYears/shulgi");
-  amar.open("../../../Dataset/Output/AmbiguousYears/amar");
   abbrev.open("../../../Dataset/Output/AmbiguousYears/abbrev");
 
-  shulgi << "TabletID\tYearName" << endl;
-  amar << "TabletID\tYearName" << endl;
   abbrev << "TabletID\tYearName" << endl;
 
   string tabletID;
@@ -59,20 +52,12 @@ int main(){
     tabletID = result->getString(2);
     yearName = result->getString(1);
 
-    if(yearName == "mu lugal-e sa-as-ru-umki mu-hul"){
-      shulgi << tabletID << "\t" << yearName << endl;
-    }
-    else if(yearName == "mu damar-dsuen lugal-e ša-aš-ru-umki a-ra2 2(diš)-kam u3 šu-ru-ud-hu-umki mu-hul"){
-      amar << tabletID << "\t" << yearName << endl;
-    }
-    else if(yearName == "mu ša-aš-ru-umki ba-hul" || yearName == "mu sa-as-ru-umki ba-hul"){
+    if(yearName == "mu sza3-asz-ru-um{ki} ba-hul"){
       abbrev << tabletID << "\t" << yearName << endl;
     }
   }
 
   abbrev.close();
-  amar.close();
-  shulgi.close();
 
   delete result;
   delete prepState;
