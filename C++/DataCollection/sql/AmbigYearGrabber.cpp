@@ -42,7 +42,7 @@ int main(){
   result = prepState->executeQuery();
 
   ofstream abbrev;
-  abbrev.open("../../../Dataset/Output/AmbiguousYears/abbrev");
+  abbrev.open("../../../Dataset/Output/ambigYears");
 
   abbrev << "TabletID\tYearName" << endl;
 
