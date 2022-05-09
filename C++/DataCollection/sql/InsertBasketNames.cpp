@@ -53,6 +53,7 @@ int main(){
   for(int x = 0; x < 3; x++){
     file >> word;
   }
+  
   while(file >> word){
     if(counter == 0){
       prepState->setString(2, word);
