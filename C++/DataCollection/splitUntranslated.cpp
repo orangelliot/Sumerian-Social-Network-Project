@@ -7,26 +7,26 @@
 #include <filesystem>
 
 using namespace std;
-namespace fs = std::filesystem;
-
 int main(int argc, char *argv[]){
   ifstream untranslated;
   ofstream tablet;
-  untranslated.open("../../Dataset/ur3_untranslated.atf");
+  string path = argv[1];
+  string dirPath = argv[2];
 
-  string path = "../../Dataset/Untranslated/";
+  untranslated.open(path);
 
   string line;
   string file;
   while(getline(untranslated, line)){
     if(line.length() > 9 && line.substr(0,2) == "&P"){
       tablet.close();
-      file = path + line.substr(1, 7) + ".atf";
+      file = dirPath + line.substr(1, 7) + ".atf";
       tablet.open(file);
+      cout << line.substr(1,7) << "\r";
     }
-
-    tablet << line << endl;
   }
+
+  cout << '\n';
 
   tablet.close();
   untranslated.close();
