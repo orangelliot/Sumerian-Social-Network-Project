@@ -97,6 +97,7 @@ fi
 
 # Download and parse the untranslated data as needed
 if [ $grabUntranslatedData = 0 ]
+then
     # Get the file from cdli if it does not exist
     if [ -f "$UNTRANSLATED/UrIIItablets.zip" ]
     then
@@ -119,6 +120,7 @@ fi
 
 # Translate the data as needed
 if [ $translatedUntranslatedData = 0 ]
+then
     # Grab the translation pipeline from github if it is not present
     if [ ! -f "$SCRIPTPATH/Sumerian-Translation-Pipeline"]
     then
