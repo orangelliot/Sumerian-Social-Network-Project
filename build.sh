@@ -15,11 +15,11 @@ TRANSLATED=$"$SCRIPTPATH/Dataset/TestTranslated" #!!!! CHANGE THIS FROM TEST
 CDLIDATA=$"https://cdli.ucla.edu/tools/cdlifiles/cdli_ur3atf.zip"
 
 ########## User Prompt Variables #########
-grabUntranslatedData=$1
-translatedUntranslatedData=$1
-removePipeline=$1
-buildDatabase=$1
-populateDatabase=$1
+grabUntranslatedData=1
+translatedUntranslatedData=1
+removePipeline=1
+buildDatabase=1
+populateDatabase=1
 
 ########## Check for directories ##########
 
@@ -122,7 +122,7 @@ fi
 if [ $translatedUntranslatedData = 0 ]
 then
     # Grab the translation pipeline from github if it is not present
-    if [ ! -f "$SCRIPTPATH/Sumerian-Translation-Pipeline"]
+    if [ ! -d "$SCRIPTPATH/Sumerian-Translation-Pipeline" ]
     then
         git clone https://github.com/cdli-gh/Sumerian-Translation-Pipeline.git
     fi
