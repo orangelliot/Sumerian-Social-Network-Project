@@ -59,7 +59,5 @@ try:
             #cursor.execute(createRawnames)
             #cursor.execute(createRawyears)
             cursor.execute(createBestyears)
-        
-
 except Error as e:
     print(e)

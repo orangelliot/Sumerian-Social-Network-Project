@@ -22,8 +22,8 @@ catalog = openpyxl.load_workbook(filename = 'catalog.xlsx')
 wsYearNames = catalog.worksheets[0]
 
 getNames = False
-getYears = True
-findBestYears = False
+getYears = False
+findBestYears = True
 
 if getNames:
     n = NameGrabber(path)
