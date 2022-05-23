@@ -7,34 +7,11 @@ import multiprocessing
 from Python.Core.DataCollection.Database.SQLfuncs import SQLfuncs
 class MultiNameGrabber(object):
 
-    processes = list()
-    tabletsProcessed = 0
+    procs = list()
+    progress = 0
 
     def __init__(self, path):
         self.path = path
-
-    def namesToDB(self):
-        numProc = multiprocessing.cpu_count()
-        tablets = os.listdir(self.path)
-        numTablets = len(tablets)
-        threadSize = numTablets/numProc
-        pos = 0
-        for index in range(numProc - 1):
-            p = Process(target=self.thread_function, args=(self, index, tablets[pos, pos + threadSize - 1],))
-            self.processes.append(p)
-            pos += threadSize
-        p = Process(target=self.thread_function, args=(self, numProc, tablets[pos, numTablets - 1],))
-        self.processes.append(p)
-
-        for process in self.processes:
-            process.start()
-
-        while self.tabletsProcessed <= numTablets:
-            print("%d/%d" % (self.tabletsProcessed, numTablets), end="\r")
-
-        for process in self.processes:
-            process.join()
-        
         
 
     def thread_function(self, name, tablets):
@@ -62,3 +39,25 @@ class MultiNameGrabber(object):
                         db.addNameToTab(tokenLine[1], tabid[0:7])
                 currentLine = tab.readline()
         print('Thread ' + name + ' finished\n')
+
+    def namesToDB(self):
+        numProc = multiprocessing.cpu_count()
+        tablets = os.listdir(self.path)
+        numTablets = len(tablets)
+        threadSize = numTablets/numProc
+        pos = 0
+        for index in range(numProc - 1):
+            p = Process(target=self.thread_function, args=(self, index, tablets[pos, pos + threadSize - 1],))
+            self.processes.append(p)
+            pos += threadSize
+        p = Process(target=self.thread_function, args=(self, numProc, tablets[pos, numTablets - 1],))
+        self.processes.append(p)
+
+        for process in self.processes:
+            process.start()
+
+        while self.tabletsProcessed <= numTablets:
+            print("%d/%d" % (self.tabletsProcessed, numTablets), end="\r")
+
+        for process in self.processes:
+            process.join()

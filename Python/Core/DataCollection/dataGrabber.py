@@ -32,7 +32,7 @@ if getNames:
 if getYears:
     y = YearGrabber(path)
     y.yearsToDB()
-
+   
 if findBestYears:
     b = YearMatcher(wsYearNames)
     b.bestYearsToDB()
