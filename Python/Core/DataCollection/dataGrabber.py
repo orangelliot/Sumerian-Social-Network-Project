@@ -9,25 +9,22 @@
 #        translated tablet files can be found.
 
 import openpyxl
-import os
-from nameGrabber import NameGrabber
+import multiNameGrabber
 from yearGrabber import YearGrabber
 from yearMatcher import YearMatcher
 
 #dataVis = openpyxl.load_workbook(filename = 'dataVis.xlsx')
 #wsTabLengthVis = dataVis.worksheets[0]
 
-path = os.getcwd() + '/Dataset/Translated/'
 catalog = openpyxl.load_workbook(filename = 'catalog.xlsx')
 wsYearNames = catalog.worksheets[0]
 
-getNames = False
+getNames = True
 getYears = False
-findBestYears = True
+findBestYears = False
 
 if getNames:
-    n = NameGrabber(path)
-    n.namesToDB()
+    multiNameGrabber()
 
 if getYears:
     y = YearGrabber(path)

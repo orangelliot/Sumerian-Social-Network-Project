@@ -56,8 +56,8 @@ try:
             #        print("%d/%d" % (currentTablet, numTablets), end="\r")
             #    cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid[0:7] + '\')')
             #print("%d/%d" % (currentTablet, numTablets))
-            #cursor.execute(createRawnames)
+            cursor.execute(createRawnames)
             #cursor.execute(createRawyears)
-            cursor.execute(createBestyears)
+            #cursor.execute(createBestyears)
 except Error as e:
     print(e)
