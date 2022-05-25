@@ -166,8 +166,3 @@ select DISTINCT bestyears.year  , rawnames.name from  bestyears
 	JOIN rawnames ON rawyears.tabid = rawnames.tabid 
     where  rawyears.year like  "mu sza3-asz-ru-um{ki} ba-hul " and not rawnames.name =  "..."
     Group by rawnames.name);
-
-
-
-
-
