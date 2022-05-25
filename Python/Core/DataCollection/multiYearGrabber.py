@@ -1,10 +1,32 @@
-
-# Elliot Fisk, collect names
-
 import os
 import multiprocessing as mp
 import psutil
 from Database.SQLfuncs import SQLfuncs
+
+import re
+
+def thread_function(path, tablets, cpu, progress):
+    db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
+    for tabid in tablets:
+        progress[cpu - 1] += 1
+        tab = open(path + tabid, 'r', encoding='utf-8')
+        current_line = tab.readline()
+
+        buf = "mu "
+        while current_line != '':
+            if(current_line.find("[year]") != -1):
+                current_line = tab.readline()
+                end = False
+                while currentLine != '' and not end:
+                    buf += re.split(' |\t', current_line)[1]
+                    buf += ' '
+                    end = (-1 != current_line.find("\tV"))
+                    current_line = tab.readline()
+                end = False
+                db.addYearToTab(buf, tabid[0:7])
+                buf = "mu "
+                continue
+            currentLine = tab.readline()
 
 path = os.getcwd() + '/Dataset/Translated/'
 
@@ -35,22 +57,3 @@ if __name__ == '__main__':
 
     for p in procs:
         p.join()
-
-def thread_function(path, tablets, cpu, progress):
-    db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
-    for tabid in tablets:
-        progress[cpu - 1] += 1
-        tab = open(path + tabid, 'r', encoding='utf-8')
-        current_line = tab.readline()
-        is_pn = False
-        while current_line != '':
-            token_line = current_line.split('\t')
-            if(current_line.find("[place]") != -1):
-                is_pn = True
-            if(current_line.find("\tPN\n") != -1):
-                if(is_pn):
-                    is_pn = False
-                else:
-                    db.addNameToTab(token_line[1], tabid[0:7])
-            current_line = tab.readline()
-    print('Thread ' + str(cpu) + ' finished\n')
