@@ -31,7 +31,7 @@ class YearMatcher(object):
     def bestYearsToDB(self):
         db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
         row = 1
-        years = db.getAttribute("*", "rawyears")
+        years = (db.getAttribute("*", "rawyears"))
         for tuple in years:
             bestSimilarity = 0
             bestYear = 'start'
@@ -44,8 +44,7 @@ class YearMatcher(object):
                 if similarity >= bestSimilarity:
                     bestYear = tempYear
                     bestSimilarity = similarity
-            #print("QueryArgs: " + bestYear + ", " + tablet + ", " + str(bestSimilarity) + "\n")
-            bestSimilarity = bestSimilarity * 10.0
+            bestSimilarity = bestSimilarity * 100.0
             db.addBestYearToTab(bestYear, tablet, str(int(bestSimilarity)))
             row += 1
             

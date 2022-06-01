@@ -1,15 +1,17 @@
 # Sumerian-Social-Network-Project
 
 connect to database: in mysql shell do
-	\connect root@sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com
+	\connect external@sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com
 with password:
-	2b928S#%
+	password
 then do
 	\use sumerianDB
 to set default schema
 then do
 	\sql
 to enter sql query mode
+
+the external user has permissions to select from all tables in sumerianDB
 
 # File Structure
 ``` 
