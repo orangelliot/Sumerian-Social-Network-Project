@@ -12,20 +12,20 @@ namespace fs = std::filesystem;
 int main(int argc, char *argv[]){
   ifstream tablet;
   ofstream csv;
-  csv.open("../../Dataset/Output/BasketPersonalNames");
-  csv << "TabletID\tPersonalName\tTranslated" << endl;
+  csv.open("../../Dataset/Output/nouns");
+  csv << "TabletID\tNoun\tTranslated" << endl;
 
   string fileName;
   string tabletID;
 
-  string path = "../../Dataset/TranslatedBasketTablets/";
+  string path = "../../Dataset/Translated/";
   for(auto & entry : fs::directory_iterator(path)){
     tablet.open(entry.path().c_str());
 
     fileName = entry.path();
-    tabletID = fileName.substr(38,7);
+    tabletID = fileName.substr(25,7);
 
-    string personalName;
+    string noun;
     string translated;
     string stringID;
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
         counter++;
       }
       else if(counter == 1){
-        personalName = word;
+        noun = word;
         counter++;
       }
       else if(counter == 2){
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]){
         stringID = word;
 
         if(stringID == "N"){
-          csv << tabletID << "\t" << translated << endl;
+          csv << tabletID << "\t" << noun << "\t" << translated << endl;
         }
 
         counter = 0;
