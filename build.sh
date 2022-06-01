@@ -126,8 +126,20 @@ then
     then
         git clone https://github.com/cdli-gh/Sumerian-Translation-Pipeline.git
     fi
+    # Install the requirements for the pipeline
+    pip3 install `cat $SCRIPTPATH/Sumerian-Translation-Pipeline/requirments.txt`
     # TODO: Translate the Untranslated data
+    echo "About to translate the files"
+    for f in "$UNTRANSLATED"
+    do
+        if [ -f "$f" ]
+        then
+            echo $f
+            #python3 "$SCRIPTPATH/Sumerian-Translation-Pipeline/pipeline.py -i $f -o $TRANSLATED"
+        fi
+    done
 fi
+
 
 # Remove pipeline if requested
 if [ $removePipeline = 0 ]
