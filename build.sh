@@ -8,9 +8,9 @@ SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
 SCRIPTPATH=$(dirname "$SCRIPT")
 # Path to untranslated data
-UNTRANSLATED=$"$SCRIPTPATH/Dataset/TestUntranslated"
+UNTRANSLATED=$"$SCRIPTPATH/Dataset/Untranslated"
 # Path to translated data
-TRANSLATED=$"$SCRIPTPATH/Dataset/TestTranslated" #!!!! CHANGE THIS FROM TEST
+TRANSLATED=$"$SCRIPTPATH/Dataset/Translated"
 # URL to Ur III period cdli data
 CDLIDATA=$"https://cdli.ucla.edu/tools/cdlifiles/cdli_ur3atf.zip"
 
@@ -109,13 +109,8 @@ then
     # Unzip the file
     unzip $UNTRANSLATED/UrIIItablets.zip -d $UNTRANSLATED/
 
-    # Split the file into files and remove the default file
-    g++ -std=c++17 -o dataSplitter $SCRIPTPATH/C++/DataCollection/splitUntranslated.cpp
-    ./dataSplitter "$UNTRANSLATED/ur3_20110805_public.atf" "$UNTRANSLATED/"
-
     # Clean up the directory
-    rm -r $UNTRANSLATED/__MACOSX # $UNTRANSLATED/UrIIItablets.zip
-    rm $UNTRANSLATED/ur3_20110805_public.atf dataSplitter
+    rm -r $UNTRANSLATED/__MACOSX
 fi
 
 # Translate the data as needed
@@ -129,15 +124,9 @@ then
     # Install the requirements for the pipeline
     pip3 install `cat $SCRIPTPATH/Sumerian-Translation-Pipeline/requirments.txt`
     # TODO: Translate the Untranslated data
-    echo "About to translate the files"
-    for f in "$UNTRANSLATED"
-    do
-        if [ -f "$f" ]
-        then
-            echo $f
-            #python3 "$SCRIPTPATH/Sumerian-Translation-Pipeline/pipeline.py -i $f -o $TRANSLATED"
-        fi
-    done
+    echo "About to translate data..."
+    python3 "$SCRIPTPATH/Sumerian-Translation-Pipeline/pipeline.py" -i "$UNTRANSLATED/ur3_20110805_public.atf" -o "$TRANSLATED/"
+
 fi
 
 
