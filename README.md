@@ -13,6 +13,12 @@ to enter sql query mode
 
 the external user has permissions to select from all tables in sumerianDB
 
+# Packages
+
+networkx
+plotly
+dash-cytoscape
+
 # File Structure
 ``` 
 |__ C++ --> Contains all the C++ scripts this project uses

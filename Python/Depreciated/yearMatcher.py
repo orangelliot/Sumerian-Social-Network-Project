@@ -37,7 +37,6 @@ class YearMatcher(object):
             bestYear = 'start'
             year = tuple[0]
             tablet = tuple[1]
-            #print("" + year + ", " + tablet + "\n")
             print("%d/%d" % (row, len(years)), end="\r")
             for i in range(self.catalog.cell(1,5).value):
                 tempYear, similarity = self.findMatchingYear(year)

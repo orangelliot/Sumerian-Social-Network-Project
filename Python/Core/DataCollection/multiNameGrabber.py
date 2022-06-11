@@ -8,6 +8,26 @@ from Database.SQLfuncs import SQLfuncs
 
 path = os.getcwd() + '/Dataset/Translated/'
 
+def thread_function(path, tablets, cpu, progress):
+    progress[cpu - 1] = 0
+    db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
+    for tabid in tablets:
+        progress[cpu - 1] += 1
+        tab = open(path + tabid, 'r', encoding='utf-8')
+        current_line = tab.readline()
+
+        is_pn = False
+        while current_line != '':
+            token_line = current_line.split('\t')
+            if(current_line.find("[place]") != -1):
+                is_pn = True
+            if(current_line.find("\tPN\n") != -1):
+                if(is_pn):
+                    is_pn = False
+                else:
+                    db.addNameToTab(token_line[1], tabid[0:7])
+            current_line = tab.readline()
+
 if __name__ == '__main__':
     n_cpus = psutil.cpu_count()
     procs = list()
@@ -35,22 +55,3 @@ if __name__ == '__main__':
 
     for p in procs:
         p.join()
-
-def thread_function(path, tablets, cpu, progress):
-    db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
-    for tabid in tablets:
-        progress[cpu - 1] += 1
-        tab = open(path + tabid, 'r', encoding='utf-8')
-        current_line = tab.readline()
-        is_pn = False
-        while current_line != '':
-            token_line = current_line.split('\t')
-            if(current_line.find("[place]") != -1):
-                is_pn = True
-            if(current_line.find("\tPN\n") != -1):
-                if(is_pn):
-                    is_pn = False
-                else:
-                    db.addNameToTab(token_line[1], tabid[0:7])
-            current_line = tab.readline()
-    print('Thread ' + str(cpu) + ' finished\n')

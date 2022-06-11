@@ -1,30 +1,31 @@
 import os
 import multiprocessing as mp
 import psutil
-from Core.DataCollection.Database.SQLfuncs import SQLfuncs
+from Database.SQLfuncs import SQLfuncs
 
 import openpyxl
 from difflib import SequenceMatcher
 
 @staticmethod
-def sim_metric(s1, s2):
+def get_sim_metric(s1, s2):
     return SequenceMatcher(None, s1, s2).ratio()
 
 def match_year(year_name):
     best_year = ''
     row = 1
     sim_metric = 0
-    cur_year = catalog.cell(row, 1).value
+    cur_year = cdli_years.cell(row, 1).value
     while cur_year != None:
-        temp = sim_metric(cur_year, year_name)
+        temp = get_sim_metric(cur_year, year_name)
         if  temp >= sim_metric:
             sim_metric = temp
-            best_year = catalog.cell(row, 3).value
+            best_year = cdli_years.cell(row, 3).value
         row += 1
-        cur_year = catalog.cell(row, 1).value
+        cur_year = cdli_years.cell(row, 1).value
     return best_year, sim_metric
 
 def thread_function(years, cpu, progress):
+    progress[cpu - 1] = 0
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
     for tuple in years:
         progress[cpu - 1] += 1
@@ -33,8 +34,7 @@ def thread_function(years, cpu, progress):
         best_year = 'start'
         year = tuple[0]
         tablet = tuple[1]
-        print("%d/%d" % (row, len(years)), end="\r")
-        for i in range(catalog.cell(1,5).value):
+        for i in range(cdli_years.cell(1,5).value):
             temp_year, similarity = match_year(year)
             if similarity >= best_sim:
                 best_year = temp_year

@@ -1,11 +1,12 @@
 import os
-import multiprocessing as mp
 import psutil
+import multiprocessing as mp
 from Database.SQLfuncs import SQLfuncs
 
 import re
 
 def thread_function(path, tablets, cpu, progress):
+    progress[cpu - 1] = 0
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
     for tabid in tablets:
         progress[cpu - 1] += 1
@@ -14,19 +15,18 @@ def thread_function(path, tablets, cpu, progress):
 
         buf = "mu "
         while current_line != '':
-            if(current_line.find("[year]") != -1):
+            if current_line.find("[year]") != -1:
                 current_line = tab.readline()
                 end = False
-                while currentLine != '' and not end:
+                while current_line != '' and not end:
                     buf += re.split(' |\t', current_line)[1]
                     buf += ' '
                     end = (-1 != current_line.find("\tV"))
                     current_line = tab.readline()
-                end = False
                 db.addYearToTab(buf, tabid[0:7])
                 buf = "mu "
-                continue
-            currentLine = tab.readline()
+            else:
+                current_line = tab.readline()
 
 path = os.getcwd() + '/Dataset/Translated/'
 
@@ -40,6 +40,7 @@ if __name__ == '__main__':
     pos = 0
     for cpu in range(n_cpus - 1):
         proc = mp.Process(target=thread_function, args=(path, tablets[pos:(pos + thread_size - 1)], cpu, progress,))
+        print("started new thread on tablets[%d,%d]" % (pos, (pos + thread_size - 1)))
         procs.append(proc)
         pos += thread_size
     proc = mp.Process(target=thread_function, args=(path, tablets[pos:(num_tablets - 1)], n_cpus, progress,))

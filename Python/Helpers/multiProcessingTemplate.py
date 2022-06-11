@@ -4,6 +4,7 @@ import psutil
 from Core.DataCollection.Database.SQLfuncs import SQLfuncs
 
 def thread_function(path, tablets, cpu, progress):
+    progress[cpu - 1] = 0
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
     for tabid in tablets:
         progress[cpu - 1] += 1
