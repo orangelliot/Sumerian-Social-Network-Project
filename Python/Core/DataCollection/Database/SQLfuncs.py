@@ -12,7 +12,7 @@ class SQLfuncs(object):
                 password=userpassword,
                 database='sumerianDB'
             )
-            print('Connection to sumerian-social-network successful')
+            #print('Connection to sumerian-social-network successful')
         except Error as e:
             print(f"The error '{e}' occurred")
 
@@ -58,6 +58,16 @@ class SQLfuncs(object):
             return cursor.fetchall()
         except Error as e:
             print(f"The error '{e}' occurred")
+
+    def execute_query(self, query):
+        cursor = self.connection.cursor()
+        print(query)
+        try:
+            data = cursor.execute(query)
+            return cursor.fetchall()
+        except Error as e:
+            print(f"The error '{e}' occurred")
+            return None
 
     def count(self, relation, attribute):
         cursor = self.connection.cursor()
