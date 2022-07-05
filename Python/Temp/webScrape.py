@@ -18,7 +18,6 @@ def getMassProvenience(TabIDs):
         provList.append(getProvenience(TabID))
     return provList
 
-#ID = ["P107256" , "P110592" , "P113657"] 
+#ID = ["P142276" , "P102394" , "P118956" , "P102394" , "P109958" , "P115986"]
 
 #print(getMassProvenience(ID))
-
