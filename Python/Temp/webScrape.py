@@ -34,4 +34,32 @@ def getMassProvenience():
 
     file.close()
 
-getMassProvenience()
+def getSubMassProvenience():
+    path = os.getcwd()
+    path = path[:len(path) - 11]
+    path = path + 'Dataset/Translated/'
+
+    tablets = os.listdir(path)
+
+    file = open("../../Dataset/Output/provenience_1.csv", "w")
+    file.write("TabID,Provenience\n")
+
+    condition = "false"
+
+    for tablet in tablets:
+        tabid = tablet[:7]
+
+        if tabid == "P121703":
+            condition = "true"
+        if tabid == "P340164":
+            condition = "false"
+
+        if condition == "true":
+            time.sleep(.001)
+            prov = getProvenience(tabid)
+            file.write(tabid + "," + prov + "\n")
+
+    file.close()
+
+#getMassProvenience()
+getSubMassProvenience()
