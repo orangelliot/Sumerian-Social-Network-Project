@@ -58,6 +58,9 @@ int main(){
 
       int counter = 1;
       while(getline(str, word, ',')){
+        if(word.length() == 1){
+          word = "___";
+        }
         prepState->setString(counter, word);
         counter++;
       }
