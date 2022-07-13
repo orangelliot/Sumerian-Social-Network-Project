@@ -114,7 +114,7 @@ for i in range(name_count):
 
 	# Save plot
 	image_file_name = f"occurrence_of_{data_name}.png"
-	plt.savefig(f"output\img\{image_file_name}", bbox_inches="tight")
+	plt.savefig(f"output/img/{image_file_name}", bbox_inches="tight")
 
 	# Save plot to html file
 	html_log.write(f"<h1>{data_name}</h1>\n")
@@ -139,7 +139,7 @@ for i in range(name_count):
 
 	plot_data = pd.DataFrame(columns=column_names) 
 
-	for seq in range(min(sequence_occurances), max(sequence_occurances)):
+	for seq in range(min(sequence_occurances), max(sequence_occurances)+1):
 		# Add blank rows
 		if seq not in sequence_occurances:
 			append_data = [seq, ""] + [0 for c in range(len(unique_proveniences))] 
@@ -179,7 +179,7 @@ for i in range(name_count):
 
 	# Save plot
 	image_file_name = f"occurrence_of_{data_name}_prov.png"
-	plt.savefig(f"output\img\{image_file_name}", bbox_inches="tight")
+	plt.savefig(f"output/img/{image_file_name}", bbox_inches="tight")
 
 	# Save plot to html file
 	html_log.write(f"<div class=\"column\"><img src=\"img\{image_file_name}\"></div>\n")
@@ -240,7 +240,7 @@ careerPlot.set_xticklabels(ticks['year']['first'], rotation=90)
 
 # Save plot
 image_file_name = "careers.png"
-plt.savefig(f"output\img\{image_file_name}", bbox_inches="tight")
+plt.savefig(f"output/img/{image_file_name}", bbox_inches="tight")
 
 # Save plot to html file
 html_log.write(f"<h1>Careers</h1>\n")
