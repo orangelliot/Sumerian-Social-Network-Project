@@ -50,7 +50,7 @@ progress = 0
 print("Querying database:")
 for name in names:
 	# Set query to search for name
-	query = f"SELECT DISTINCT rawnames.tabid, yearsequence.year, yearsequence.sequence, proveniences.provenience FROM rawnames INNER JOIN bestyears ON rawnames.tabid = bestyears.tabid INNER JOIN yearsequence ON bestyears.year = yearsequence.year INNER JOIN proveniences ON rawnames.tabid = proveniences.tabid WHERE rawnames.name = '{name}';"
+	query = f"SELECT DISTINCT rawnames.tabid, yearsequence.year, yearsequence.sequence, proveniences.provenience FROM rawnames INNER JOIN bestyears ON rawnames.tabid = bestyears.tabid INNER JOIN yearsequence ON bestyears.year = yearsequence.year INNER JOIN proveniences ON rawnames.tabid = proveniences.tabid WHERE rawnames.name = \'{name}\';"
 	# Query the database
 	queryDFs.append(pd.read_sql(query, database))
 	progress += 1
