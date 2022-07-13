@@ -1,4 +1,3 @@
-# %%
 # Nicholas J Uhlhorn
 # Sumerian Social Network Research Project
 # July 2022
@@ -9,9 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
-
-# %%
-
 # Suppress warning that sql connector is not compatible with our database (seems to work fine so far)
 import warnings
 warnings.simplefilter(action='ignore', category=UserWarning)
@@ -20,8 +16,12 @@ warnings.simplefilter(action='ignore', category=UserWarning)
 pwd_token_file = open("dbtoken.txt", 'r')
 pwd_token = pwd_token_file.readline()
 
+if (len(sys.argv) < 2):
+	print("Incorrect number of arguments, see usage:\npython career_name_info.py <name_of_interest> <name_of_interest> ...")
+	exit()
+
 # Get names to lookup
-names = ['sza3-gu4', 'ur-x', 'inim-{d}szara2', 'e2-masz-ta']
+names = sys.argv[1:]
 
 queryDFs = []
 
@@ -60,8 +60,6 @@ print(f"{progress}/{name_count}")
 # Close database as we are done with it
 database.close()
 
-
-# %%
 from datetime import date
 import os
 import shutil
@@ -250,5 +248,3 @@ html_log.write(f"<img src=\"img\{image_file_name}\">")
 
 html_log.write("</body>\n</html>")
 html_log.close()
-
-
