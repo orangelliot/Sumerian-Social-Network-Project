@@ -87,7 +87,6 @@ void *writing(void *arg){
     sem_wait(&buf_full);
     pthread_mutex_lock(&mutex);
 
-    //SEGFAULT: Vector<char*> cannot be converted to string
     statement->setString(1, buffer.begin()->tabid);
     statement->setString(2, buffer.begin()->raw);
     statement->setString(3, buffer.begin()->translated);
