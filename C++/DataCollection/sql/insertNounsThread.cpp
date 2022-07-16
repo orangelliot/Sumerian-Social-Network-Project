@@ -40,6 +40,7 @@ void *reading(void *arg){
     if(counter == 0){
       instance.push_back(word);
       counter++;
+      //cout << "reading" << endl;
     }
     else if(counter == 1){
       instance.push_back(word);
@@ -71,9 +72,11 @@ void *writing(void *arg){
     sem_wait(&buf_full);
     pthread_mutex_lock(&mutex);
 
+    //SEGFAULT: Vector<char*> cannot be converted to string
     statement->setString(1, buffer[0][0]);
     statement->setString(2, buffer[0][1]);
     statement->setString(3, buffer[0][2]);
+    //cout << "writing" << endl;
     statement->execute();
     buffer.erase(buffer.begin());
 
