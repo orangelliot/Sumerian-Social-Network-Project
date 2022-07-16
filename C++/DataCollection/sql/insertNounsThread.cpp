@@ -39,6 +39,7 @@ sem_t buf_full;
 int buffersize = 2500;
 vector<DB_instance> buffer;
 pthread_mutex_t mutex;
+int finished = 0;
 
 void *reading(void *arg){
   ifstream file;
@@ -76,6 +77,7 @@ void *reading(void *arg){
     }
   }
 
+  finished = 1;
   file.close();
   return 0;
 }
@@ -83,7 +85,7 @@ void *reading(void *arg){
 void *writing(void *arg){
   sql::PreparedStatement *statement = (sql::PreparedStatement*)arg;
 
-  while(1){
+  while(finished == 0 || buffer.empty() == 0){
     sem_wait(&buf_full);
     pthread_mutex_lock(&mutex);
 
