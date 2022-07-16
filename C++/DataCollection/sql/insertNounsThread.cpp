@@ -18,42 +18,57 @@
 using namespace std;
 namespace fs = std::filesystem;
 
+class DB_instance{
+  public:
+    string tabid;
+    string raw;
+    string translated;
+    DB_instance(string a, string b, string c){
+      tabid = a;
+      raw = b;
+      translated = c;
+    }
+};
+
 const string server = "sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com";
 const string username = "root";
 string password;
 
 sem_t buf_empty;
 sem_t buf_full;
-int buffersize = 1000;
-vector<vector<string>> buffer(buffersize);
+int buffersize = 2500;
+vector<DB_instance> buffer;
 pthread_mutex_t mutex;
 
 void *reading(void *arg){
   ifstream file;
   file.open("../../../Dataset/Output/nouns");
 
-  vector<string> instance;
   string word;
+  string tabid = "NULL";
+  string raw = "NULL";
+  string translated = "NULL";
   int counter = 0;
 
   while(file >> word){
     if(counter == 0){
-      instance.push_back(word);
+      tabid = word;
       counter++;
-      cout << "reading" << endl;
     }
     else if(counter == 1){
-      instance.push_back(word);
+      raw = word;
       counter++;
     }
     else if(counter == 2){
-      instance.push_back(word);
+      translated = word;
 
       sem_wait(&buf_empty);
       pthread_mutex_lock(&mutex);
 
-      buffer.push_back(instance);
-      instance.clear();
+      buffer.push_back(DB_instance(tabid, raw, translated));
+      tabid = "NULL";
+      raw = "NULL";
+      translated = "NULL";
       counter = 0;
 
       pthread_mutex_unlock(&mutex);
@@ -73,10 +88,9 @@ void *writing(void *arg){
     pthread_mutex_lock(&mutex);
 
     //SEGFAULT: Vector<char*> cannot be converted to string
-    statement->setString(1, *buffer.begin());
-    statement->setString(2, *buffer.begin());
-    statement->setString(3, *buffer.begin());
-    cout << "writing" << endl;
+    statement->setString(1, buffer.begin()->tabid);
+    statement->setString(2, buffer.begin()->raw);
+    statement->setString(3, buffer.begin()->translated);
     statement->execute();
     buffer.erase(buffer.begin());
 
@@ -117,7 +131,7 @@ int main(){
 
   prepState = connect->prepareStatement("INSERT INTO nouns(tabid, raw, translated) VALUES(?,?,?)");
 
-  pthread_t reader, writer;
+  pthread_t reader, writer[5];
   pthread_mutex_init(&mutex, NULL);
   sem_init(&buf_empty,0,buffersize);
   sem_init(&buf_full,0,0);
@@ -127,17 +141,21 @@ int main(){
     exit(-1);
   }
 
-  if(pthread_create(&writer, NULL, &writing, prepState)){
-    cout << "Error creating writer thread" << endl;
-    exit(-1);
+  for(int x = 0; x < 5; x++){
+    if(pthread_create(&writer[x], NULL, &writing, prepState)){
+      cout << "Error creating writer thread" << endl;
+      exit(-1);
+    }
   }
 
   if(pthread_join(reader, NULL)){
     cout << "Error joining reader thread" << endl;
   }
 
-  if(pthread_join(writer, NULL)){
-    cout << "Error joining writer thread" << endl;
+  for(int x = 0; x < 5; x++){
+    if(pthread_join(writer[x], NULL)){
+      cout << "Error joining writer thread" << endl;
+    }
   }
 
   pthread_mutex_destroy(&mutex);
