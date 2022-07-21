@@ -39,6 +39,7 @@ sem_t buf_full;
 int buffersize = 2500;
 vector<DB_instance> buffer;
 pthread_mutex_t mutex;
+int threadno = 5;
 int finished = 0;
 
 void *reading(void *arg){
@@ -132,7 +133,7 @@ int main(){
 
   prepState = connect->prepareStatement("INSERT INTO nouns(tabid, raw, translated) VALUES(?,?,?)");
 
-  pthread_t reader, writer[5];
+  pthread_t reader, writer[threadno];
   pthread_mutex_init(&mutex, NULL);
   sem_init(&buf_empty,0,buffersize);
   sem_init(&buf_full,0,0);
@@ -142,7 +143,7 @@ int main(){
     exit(-1);
   }
 
-  for(int x = 0; x < 5; x++){
+  for(int x = 0; x < threadno; x++){
     if(pthread_create(&writer[x], NULL, &writing, prepState)){
       cout << "Error creating writer thread" << endl;
       exit(-1);
@@ -153,9 +154,16 @@ int main(){
     cout << "Error joining reader thread" << endl;
   }
 
-  for(int x = 0; x < 5; x++){
-    if(pthread_join(writer[x], NULL)){
+  //pthread_cancel not the best solution but it works
+  for(int x = 0; x < threadno; x++){
+    /*if(pthread_join(writer[x], NULL)){
       cout << "Error joining writer thread" << endl;
+    }
+    else{
+      cout << "Thread " << x << endl;
+    }*/
+    if(pthread_cancel(writer[x]) != ESRCH){
+      cout << "Thread " << x << "destroyed" << endl;
     }
   }
 
