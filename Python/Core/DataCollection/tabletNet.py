@@ -46,6 +46,7 @@ if __name__ == '__main__':
 
     testnode = list(tablet_network.nodes)[math.floor((random.random()*len(tablet_network)))]
     print("")
+    print(testnode)
     print(len(tablet_network.nodes))
 
     ego_tablet_network = nx.ego_graph(tablet_network, testnode, 2)
@@ -58,21 +59,15 @@ if __name__ == '__main__':
 
     pos = nx.circular_layout(ego_tablet_network, scale=1.0, center=None)
 
-    print("check")
-
     cy = nx.cytoscape_data(ego_tablet_network)
 
-    print("step 1")
     for n in cy["elements"]["nodes"]:
         for k, v in n.items():
             v["label"] = v.pop("value")
 
-    print("step 2")
-
     for n, p in zip(cy["elements"]["nodes"], pos.values()):
         n["pos"] = {"x": int(p[0] * SCALING_FACTOR), "y": int(p[1] * SCALING_FACTOR)}
 
-    print("step 3")
     elements = cy["elements"]["nodes"] + cy["elements"]["edges"]
 
     app.layout = html.Div(
