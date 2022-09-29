@@ -6,7 +6,7 @@ from Database.SQLfuncs import SQLfuncs
 import openpyxl
 from difflib import SequenceMatcher
 
-@staticmethod
+#@staticmethod
 def get_sim_metric(s1, s2):
     return SequenceMatcher(None, s1, s2).ratio()
 
