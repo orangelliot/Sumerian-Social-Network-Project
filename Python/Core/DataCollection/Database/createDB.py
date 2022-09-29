@@ -17,6 +17,7 @@ try:
             PRIMARY KEY (kingnum)
             );'''
         createTabids = '''CREATE TABLE tabids (
+            seqid int not null,
             tabid char(128) not null,
             simmetric float,
             numnames int,
@@ -42,22 +43,26 @@ try:
             FOREIGN KEY (tabid) REFERENCES tabids (tabid)
             );'''
         with connection.cursor() as cursor:
-            #cursor.execute('DROP DATABASE sumerianDB;')
-            #cursor.execute('CREATE DATABASE sumerianDB;')
+            cursor.execute('DROP DATABASE sumerianDB;')
+            cursor.execute('CREATE DATABASE sumerianDB;')
             cursor.execute('USE sumerianDB;')
-            #cursor.execute(createCDLIyears)
-            #cursor.execute(createTabids)
-            #tablets = os.listdir(os.getcwd() + '/Dataset/Translated/')
-            #numTablets = len(tablets)
-            #currentTablet = 0
-            #for tabid in tablets:
-            #    currentTablet += 1
-            #    if((currentTablet % 500) == 0):
-            #        print("%d/%d" % (currentTablet, numTablets), end="\r")
-            #    cursor.execute('INSERT INTO tabids (tabid) VALUES (\'' + tabid[0:7] + '\')')
-            #print("%d/%d" % (currentTablet, numTablets))
-            #cursor.execute(createRawnames)
-            #cursor.execute(createRawyears)
+            cursor.execute(createCDLIyears)
+            cursor.execute(createTabids)
+            tablets = os.listdir(os.getcwd() + '/Dataset/Translated/')
+            num_tablets = len(tablets)
+
+            #for i in range(num_tablets):
+            #    cursor.execute('update tabids (seqid) values (' + str(i) + ');')
+
+            cur_tab = 0
+            for tabid in tablets:
+                cur_tab += 1
+                if((cur_tab % 500) == 0):
+                    print("%d/%d" % (cur_tab, num_tablets), end="\r")
+                cursor.execute('INSERT INTO tabids (seqid, tabid) VALUES (' + str(cur_tab) + ', \'' + tabid[0:7] + '\')')
+            print("%d/%d" % (cur_tab, num_tablets))
+            cursor.execute(createRawnames)
+            cursor.execute(createRawyears)
             cursor.execute(createBestyears)
 except Error as e:
     print(e)

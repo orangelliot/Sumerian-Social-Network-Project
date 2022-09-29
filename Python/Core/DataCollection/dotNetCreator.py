@@ -7,14 +7,14 @@ tablet_net = pydot.Dot('tablet_net', graph_type='graph',bgcolor='yellow')
 db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
 
 tablet_counter = 0
-tablets = db.execute_query("select distinct tabid from tabids;")
+tablets = db.execute_select('select distinct tabid from tabids;')
 for i in range(len(tablets)):
     tablets[i] = [tablet_counter, tablets[i][0]]
     temp_node = pydot.Node(tablet_counter,label=tablets[i])
     tablet_net.add_node(temp_node)
     tablet_counter += 1
 
-names = db.execute_query("select distinct name from rawnames where name !='...' limit 4;")
+names = db.execute_select('select distinct name from rawnames where name !=\'...\' limit 4;')
 
 for i in range(len(names)):
     names[i] = names[i][0]
@@ -44,7 +44,7 @@ num_names = len(names)
 for cur_name in names:
     name_progress += 1
     cur_name = db.sanitizeInput(cur_name)
-    tabs_with_name = db.execute_query("select distinct tabid from rawnames where name=\'" + cur_name + "\';")
+    tabs_with_name = db.execute_select('select distinct tabid from rawnames where name=\'' + cur_name + '\';')
 
     tablet_counter = 0
     for i in range(len(tabs_with_name)):
