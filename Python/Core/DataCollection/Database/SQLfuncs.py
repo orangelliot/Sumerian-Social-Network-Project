@@ -18,7 +18,7 @@ class SQLfuncs(object):
 
     def execute_insert(self, query):
         cursor = self.connection.cursor()
-        print(query)
+        #print(query)
         try:
             cursor.execute(query)
             self.connection.commit()
@@ -28,7 +28,7 @@ class SQLfuncs(object):
 
     def execute_select(self, query):
         cursor = self.connection.cursor()
-        print(query)
+        #print(query)
         try:
             cursor.execute(query)
             return cursor.fetchall()

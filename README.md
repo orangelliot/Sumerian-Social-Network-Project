@@ -18,6 +18,9 @@ the external user has permissions to select from all tables in sumerianDB
 networkx
 plotly
 dash-cytoscape
+pandas
+pydot
+graphviz
 
 # File Structure
 ``` 

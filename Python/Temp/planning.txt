@@ -1,0 +1,2 @@
+1 list for each of n tablets
+list contains seqid of tablet that this tab is linked to

@@ -43,7 +43,7 @@ num_names = len(names)
 
 for cur_name in names:
     name_progress += 1
-    cur_name = db.sanitizeInput(cur_name)
+    cur_name = db.sanitize_input(cur_name)
     tabs_with_name = db.execute_select('select distinct tabid from rawnames where name=\'' + cur_name + '\';')
 
     tablet_counter = 0

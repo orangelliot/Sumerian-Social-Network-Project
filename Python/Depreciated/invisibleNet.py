@@ -20,7 +20,7 @@ name_progress = 1
 num_names = len(names)
 
 for cur_name in names:
-    cur_name = db.sanitizeInput(cur_name)
+    cur_name = db.sanitize_input(cur_name)
     tabs_with_name = db.execute_select("select distinct tabid from rawnames where name=\'" + cur_name + "\';")
     generated_edges = list()
 

@@ -10,7 +10,7 @@ def tf_gather_edges(name):
     print("started gathering edges for ", name)
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
     query = "select distinct tabids.seqid, tabids.tabid from rawnames join tabids where rawnames.tabid = tabids.tabid and name = \'" + name + "\';"
-    tabs_with_name = db.execute_query(query)
+    tabs_with_name = db.execute_select(query)
     tablet_counter = 0
     for i in range(len(tabs_with_name)):
         tabs_with_name[i] = [tabs_with_name[i][0]]
@@ -40,13 +40,13 @@ if __name__ == '__main__':
 
     # get and clean up tablets, assign each a sequential ID
     tablet_counter = 0
-    tablets = db.execute_query("select seqid, tabid from tabids;")
+    tablets = db.execute_select("select seqid, tabid from tabids;")
     for i in range(len(tablets)):
         tablets[i] = [tablets[i][0], tablets[i][1]]
         tablet_counter += 1
 
     # get and clean up names
-    names = db.execute_query("select distinct name from rawnames where name !='...' and name !='|SZU+LAGAB|' limit 4;")
+    names = db.execute_select("select distinct name from rawnames where name !='...' and name !='|SZU+LAGAB|' limit 4;")
     for i in range(len(names)):
         names[i] = names[i][0]
 
