@@ -1,3 +1,9 @@
+// Insert Nouns Thread
+// July 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -pthread -o insertNounsThread.out insertNounsThread.cpp -lmysqlcppconn
 
 #include <stdlib.h>

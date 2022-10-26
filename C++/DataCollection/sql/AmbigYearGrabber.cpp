@@ -1,3 +1,9 @@
+// Ambiguou Year Grabber
+// May 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o AmbigYearGrabber.out AmbigYearGrabber.cpp -lmysqlcppconn
 
 #include <stdlib.h>

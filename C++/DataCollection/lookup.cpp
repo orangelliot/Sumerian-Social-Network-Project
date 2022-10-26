@@ -1,3 +1,9 @@
+// Lookup
+// October 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o lookup.out lookup.cpp
 
 #include <stdlib.h>

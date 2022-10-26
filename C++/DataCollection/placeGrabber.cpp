@@ -1,3 +1,9 @@
+// Place Grabber
+// June 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o placeGrabber.out placeGrabber.cpp
 
 #include <stdlib.h>

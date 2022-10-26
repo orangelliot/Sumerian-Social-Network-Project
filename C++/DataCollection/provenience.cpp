@@ -1,3 +1,9 @@
+// Provenience
+// June 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o provenience.out provenience.cpp
 
 #define PY_SSIZE_T_CLEAN
