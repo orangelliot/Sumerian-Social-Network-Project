@@ -37,7 +37,7 @@ app.setFont(12)
 # Image FRAME START
 app.startFrame("ImageFrame", row = 0, column = 0, colspan=2)
 app.startScrollPane("ImagePane")
-app.addImage("graphImage", "../../GraphicRepresentations/output/img/careers.png")
+app.addImage("graphImage", "../../GraphicRepresentations/output/img/careers.gif")
 app.addLabel("Graph")
 app.stopScrollPane()
 app.addScale("Scale")
