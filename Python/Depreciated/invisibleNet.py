@@ -4,14 +4,14 @@ import openpyxl as xl
 
 db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
 
-tablets = db.execute_query("select distinct tabid from tabids;")
+tablets = db.execute_select("select distinct tabid from tabids;")
 for i in range(len(tablets)):
     tablets[i] = tablets[i][0]
 
 tablet_network = nx.Graph()
 tablet_network.add_nodes_from(tablets, sum_weight=0)
 
-names = db.execute_query("select distinct name from rawnames where name !='...' limit 10;")
+names = db.execute_select("select distinct name from rawnames where name !='...' limit 10;")
 
 for i in range(len(names)):
     names[i] = names[i][0]
@@ -20,8 +20,8 @@ name_progress = 1
 num_names = len(names)
 
 for cur_name in names:
-    cur_name = db.sanitizeInput(cur_name)
-    tabs_with_name = db.execute_query("select distinct tabid from rawnames where name=\'" + cur_name + "\';")
+    cur_name = db.sanitize_input(cur_name)
+    tabs_with_name = db.execute_select("select distinct tabid from rawnames where name=\'" + cur_name + "\';")
     generated_edges = list()
 
     for i in range(len(tabs_with_name)):

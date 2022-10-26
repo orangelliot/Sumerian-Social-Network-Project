@@ -25,7 +25,7 @@ def thread_function(path, tablets, cpu, progress):
                 if(is_pn):
                     is_pn = False
                 else:
-                    db.addNameToTab(token_line[1], tabid[0:7])
+                    db.execute_insert('insert into rawnames values (%s, %s);' % token_line[1], tabid[0:7])
             current_line = tab.readline()
 
 if __name__ == '__main__':

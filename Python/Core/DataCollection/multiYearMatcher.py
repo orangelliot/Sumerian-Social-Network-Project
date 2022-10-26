@@ -40,7 +40,7 @@ def thread_function(years, cpu, progress):
                 best_year = temp_year
                 best_sim = similarity
         best_sim *= 100.0
-        db.addBestYearToTab(best_year, tablet, str(int(best_sim)))
+        db.execute_insert('insert into bestyears (%s, %s, %d);' % best_year, tablet, int(best_sim))
         row += 1
 
 catalog = openpyxl.load_workbook(filename = 'catalog.xlsx')
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     n_cpus = psutil.cpu_count()
     procs = list()
     progress = mp.Array('i', range(n_cpus))
-    years = db.execute_query("select * from rawyears group by tabid;")
+    years = db.execute_select("select * from rawyears group by tabid;")
     print(len(years))
     num_years = len(years)
     thread_size = int(num_years/n_cpus)

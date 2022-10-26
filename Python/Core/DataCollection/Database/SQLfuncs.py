@@ -16,73 +16,27 @@ class SQLfuncs(object):
         except Error as e:
             print(f"The error '{e}' occurred")
 
-    def addNameToTab(self, name, tabid):
+    def execute_insert(self, query):
         cursor = self.connection.cursor()
-        year = self.sanitizeInput(name)
-        addNameQuery = 'INSERT INTO rawnames (name, tabid) VALUES (\'' + name + '\', \'' + tabid + '\');'
+        #print(query)
         try:
-            cursor.execute(addNameQuery)
+            cursor.execute(query)
             self.connection.commit()
-            #print('Added name successfuly')
         except Error as e:
             print(f"The error '{e}' occurred")
+            return None
 
-    def addYearToTab(self, year, tabid):
+    def execute_select(self, query):
         cursor = self.connection.cursor()
-        year = self.sanitizeInput(year)
-        addYearQuery = 'INSERT INTO rawyears (year, tabid) VALUES (\'' + year + '\', \'' + tabid + '\');'
+        #print(query)
         try:
-            cursor.execute(addYearQuery)
-            self.connection.commit()
-            #print('Added year successfuly')
-        except Error as e:
-            print(f"The error '{e}' occurred")
-
-    def addBestYearToTab(self, bestYear, tabid, similarity):
-        cursor = self.connection.cursor()
-        bestYear = self.sanitizeInput(bestYear)
-        addBestYearQuery = 'INSERT INTO bestyears (year, tabid, similarity) VALUES (\'' + bestYear + '\', \'' + tabid +'\', \'' + similarity +'\');'
-        try:
-            cursor.execute(addBestYearQuery)
-            self.connection.commit()
-            #print('Added year successfuly')
-        except Error as e:
-            print(f"The error '{e}' occurred")
-
-    def getAttribute(self, attribute, relation):
-        cursor = self.connection.cursor()
-        getAttributeQuery = 'SELECT ' + attribute + ' FROM ' + relation + ';'
-        try:
-            cursor.execute(getAttributeQuery)
-            print('Fetched data successfuly')
-            return cursor.fetchall()
-        except Error as e:
-            print(f"The error '{e}' occurred")
-
-    def execute_query(self, query):
-        cursor = self.connection.cursor()
-        print(query)
-        try:
-            data = cursor.execute(query)
+            cursor.execute(query)
             return cursor.fetchall()
         except Error as e:
             print(f"The error '{e}' occurred")
             return None
 
-    def count(self, relation, attribute):
-        cursor = self.connection.cursor()
-        relation = self.sanitizeInput(relation)
-        attribute = self.sanitizeInput(attribute)
-        getCountQuery = 'SELECT COUNT(' + attribute + ') FROM ' + relation + ';'
-        try:
-            data = cursor.execute(getCountQuery)
-            print('Fetched data successfuly')
-            return data
-        except Error as e:
-            print(f"The error '{e}' occurred")
-
-
-    def sanitizeInput(self, input):
+    def sanitize_input(self, input):
         out = ""
         for i in range(len(input)):
             out += input[i]

@@ -23,7 +23,7 @@ def thread_function(path, tablets, cpu, progress):
                     buf += ' '
                     end = (-1 != current_line.find("\tV"))
                     current_line = tab.readline()
-                db.addYearToTab(buf, tabid[0:7])
+                db.execute_insert('insert into rawyears values (%s, %s);' % buf, tabid[0:7])
                 buf = "mu "
             else:
                 current_line = tab.readline()

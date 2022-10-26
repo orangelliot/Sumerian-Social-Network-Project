@@ -2,7 +2,7 @@ import os
 import openpyxl
 
 chunks = os.listdir("PythonHelpers/Chunks")
-tabulatedData = openpyxl.load_workbook(filename = 'tabulatedData.xlsx')
+tabulatedData = openpyxl.load_workbook(filename = 'dataVis.xlsx')
 hist = tabulatedData.worksheets[3]
 
 row = 1
@@ -26,4 +26,4 @@ for chunk in chunks:
             currentline = cur.readline()
 hist['C1'].value = row
 hist['C2'].value = longest
-tabulatedData.save("tabulatedData.xlsx")
+tabulatedData.save("dataVis.xlsx")
