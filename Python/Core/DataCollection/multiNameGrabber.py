@@ -1,5 +1,8 @@
-
-# Elliot Fisk, collect names
+# Multi Name Grabber
+# April 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
 
 import os
 import multiprocessing as mp

@@ -1,3 +1,9 @@
+# Pydot Edge Tests
+# March 2022
+# September Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import pydot as pd
 
 g = pd.Dot()

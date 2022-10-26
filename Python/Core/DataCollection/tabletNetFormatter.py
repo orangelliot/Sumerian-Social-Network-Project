@@ -1,3 +1,9 @@
+# Tablet Net Formatter
+# October 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import csv
 from Database.SQLfuncs import SQLfuncs
 

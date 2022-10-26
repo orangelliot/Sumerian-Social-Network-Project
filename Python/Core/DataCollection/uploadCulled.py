@@ -1,3 +1,9 @@
+# Uploaded Culled 
+# October 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import pandas as pd
 import multiprocessing as mp
 from Database.SQLfuncs import SQLfuncs

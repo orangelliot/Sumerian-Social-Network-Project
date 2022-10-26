@@ -1,6 +1,8 @@
+# App
 # Nicholas J Uhlhorn
-# Sumerian Social Network Research Project
 # September 2022
+# A Program that uses appJar to make a gui that can be used to generate
+# graphs from the database given a list of names.
 
 # import the library
 from appJar import gui

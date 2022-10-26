@@ -1,3 +1,9 @@
+# Multi Year Grabber
+# May 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import os
 import psutil
 import multiprocessing as mp

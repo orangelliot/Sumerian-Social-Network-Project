@@ -1,3 +1,9 @@
+# Length Grabber
+# March 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import os
 import openpyxl
 

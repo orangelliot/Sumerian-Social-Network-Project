@@ -1,3 +1,9 @@
+# Multi Year Matcher
+# May 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import os
 import multiprocessing as mp
 import psutil

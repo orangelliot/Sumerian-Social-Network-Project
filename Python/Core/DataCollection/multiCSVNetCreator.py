@@ -1,3 +1,9 @@
+# MultiCSV Network Creator
+# October 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import multiprocessing as mp
 import pandas as pd
 from Database.SQLfuncs import SQLfuncs
