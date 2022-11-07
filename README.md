@@ -3,15 +3,15 @@
 connect to database: in mysql shell do
 	\connect external@sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com
 with password:
-	password
+	turamili
 then do
-	\use sumerianDB
+	\use sumerianDBpublic
 to set default schema
 then do
 	\sql
 to enter sql query mode
 
-the external user has permissions to select from all tables in sumerianDB
+the external user has permissions to select from all tables in sumerianDBpublic
 
 # Packages
 
