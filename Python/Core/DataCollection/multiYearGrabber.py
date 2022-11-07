@@ -1,3 +1,5 @@
+#Elliot Fisk: collect years from tablet data
+
 import os
 import psutil
 import multiprocessing as mp
@@ -21,9 +23,9 @@ def thread_function(path, tablets, cpu, progress):
                 while current_line != '' and not end:
                     buf += re.split(' |\t', current_line)[1]
                     buf += ' '
-                    end = (-1 != current_line.find("\tV"))
+                    end = (-1 != current_line.find("\tV") and -1 == current_line.find('us2-sa'))
                     current_line = tab.readline()
-                db.execute_insert('insert into rawyears values (%s, %s);' % buf, tabid[0:7])
+                db.execute_insert(f'insert into rawyearsfixed values (\"{buf}\", \"{tabid[0:7]}\");')
                 buf = "mu "
             else:
                 current_line = tab.readline()

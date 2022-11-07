@@ -1,3 +1,5 @@
+#Elliot Fisk: write data on tablet lengths to excel spreadsheet
+
 import os
 import openpyxl
 
