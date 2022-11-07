@@ -1,3 +1,9 @@
+// Insert Places
+// June 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o insertPlaces.out insertPlaces.cpp -lmysqlcppconn
 
 #include <stdlib.h>

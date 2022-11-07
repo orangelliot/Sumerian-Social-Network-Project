@@ -1,3 +1,9 @@
+// SQL Query
+// May 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o SQLQuery.out SQLQuery.cpp -lmysqlcppconn
 
 #include <stdlib.h>

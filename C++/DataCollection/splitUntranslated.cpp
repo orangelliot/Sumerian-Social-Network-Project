@@ -1,3 +1,9 @@
+// Split Untranslated
+// April 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o splitUntranslated.out splitUntranslated.cpp
 
 #include <stdlib.h>

@@ -1,3 +1,9 @@
+// Insert Nouns
+// June 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o InsertNouns.out InsertNouns.cpp -lmysqlcppconn
 
 #include <stdlib.h>

@@ -1,3 +1,9 @@
+// Basket Tablets
+// April 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o basketTablets.out basketTablets.cpp
 
 #include <stdlib.h>

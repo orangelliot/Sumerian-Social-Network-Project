@@ -1,3 +1,9 @@
+# Web Scrape
+# July 2022
+# Greg Lindeman
+# ---------------
+# TODO synopsis and comments v below v
+
 from errno import EDEADLK
 import requests
 import time

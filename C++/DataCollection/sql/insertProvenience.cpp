@@ -1,3 +1,9 @@
+// Insert Provenience
+// July 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o insertProvenience.out insertProvenience.cpp -lmysqlcppconn
 
 #include <stdlib.h>

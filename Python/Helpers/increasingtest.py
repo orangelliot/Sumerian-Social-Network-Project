@@ -1,3 +1,9 @@
+# Increasing Test
+# September 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 from Database.SQLfuncs import SQLfuncs
 
 db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')

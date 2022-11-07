@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #Elliot Fisk: create formatting for edgelist CSVs
+=======
+# Tablet Net Formatter
+# October 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+>>>>>>> 6e744b459c41db5cf92f2d7f25600ad6c711acb5
 
 import csv
 from Database.SQLfuncs import SQLfuncs

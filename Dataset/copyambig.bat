@@ -1,0 +1,1 @@
+FOR /F %%i IN (ambigtabletslist.txt) DO xcopy /s C:\Users\ellio\SchoolProjects\Sumerian-Social-Network-Project\Translated\%%i.CONLL D:\Users\ellio\SchoolProjects\Sumerian-Social-Network-Project\AmbigTablets

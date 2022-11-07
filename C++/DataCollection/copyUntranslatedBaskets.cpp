@@ -1,3 +1,9 @@
+// Copy Untranslated Tablets
+// April 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o copyUntranslatedBaskets.out copyUntranslatedBaskets.cpp
 
 #include <stdlib.h>

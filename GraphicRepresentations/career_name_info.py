@@ -1,6 +1,7 @@
+# Career Name information
 # Nicholas J Uhlhorn
-# Sumerian Social Network Research Project
 # July 2022
+# Code to generate a career plot graph of given names
 
 import mysql.connector as connection
 import pandas as pd

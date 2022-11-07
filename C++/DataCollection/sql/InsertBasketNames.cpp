@@ -1,3 +1,9 @@
+// Insert Basket Names
+// May 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o InsertBasketNames.out InsertBasketNames.cpp -lmysqlcppconn
 
 #include <stdlib.h>

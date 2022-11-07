@@ -1,3 +1,9 @@
+# MultiCSV Network Creator
+# October 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 #Elliot Fisk: create CSV edgelist file for tracking shared names as edge weights
 
 import math

@@ -1,3 +1,9 @@
+// Insert Year Order
+// June 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o insertYearOrder.out insertYearOrder.cpp -lmysqlcppconn
 
 #include <stdlib.h>

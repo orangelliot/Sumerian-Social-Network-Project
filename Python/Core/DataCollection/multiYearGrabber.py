@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #Elliot Fisk: collect years from tablet data
+=======
+# Multi Year Grabber
+# May 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+>>>>>>> 6e744b459c41db5cf92f2d7f25600ad6c711acb5
 
 import os
 import psutil

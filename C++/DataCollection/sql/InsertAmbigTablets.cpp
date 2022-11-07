@@ -1,3 +1,9 @@
+// Insert Ambiguous Tablets
+// May 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o InsertAmbigTablets.out InsertAmbigTablets.cpp -lmysqlcppconn
 
 #include <stdlib.h>

@@ -1,3 +1,9 @@
+// Ambiguous Tablets
+// May 2022
+// Henry Il
+// ---------------
+// TODO: Synopsis and comments v below v
+
 //g++ -std=c++17 -o copyAmbiguous.out copyAmbiguous.cpp
 
 #include <stdlib.h>

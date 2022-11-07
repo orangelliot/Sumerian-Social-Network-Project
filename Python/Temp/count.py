@@ -1,3 +1,9 @@
+# Count
+# March 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import os
 
 rawdata = open("sumerian_untranslated.atf", 'r', encoding="utf-8")
