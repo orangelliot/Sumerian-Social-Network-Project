@@ -15,5 +15,4 @@ net_df = net_df[net_df['shared_names'] > 0]
 print(net_df.groupby('tab1').tab2_year.mean())
 
 #amar-sin 6 is ~70
-
 #sulgi 42 is ~60

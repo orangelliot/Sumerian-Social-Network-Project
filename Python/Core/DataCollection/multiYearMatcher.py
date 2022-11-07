@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-#Elliot Fisk: find closest match for each tablet's year
-=======
 # Multi Year Matcher
 # May 2022
 # Elliot Fisk
 # ---------------
 # TODO synopsis and comments v below v
->>>>>>> 6e744b459c41db5cf92f2d7f25600ad6c711acb5
+# Elliot Fisk: find closest match for each tablet's year
 
 import os
 import multiprocessing as mp
