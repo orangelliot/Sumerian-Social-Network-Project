@@ -62,7 +62,7 @@ if __name__ == '__main__':
     n_cpus = psutil.cpu_count()
     procs = list()
     progress = mp.Array('i', range(n_cpus))
-    years = db.execute_select("select * from rawyearsfixed group by tabid where ;")
+    years = db.execute_select("select * from rawyearsfixed group by tabid;")
     years = years[YEARS_START:YEARS_END]
     num_years = len(years)
     thread_size = int(num_years/n_cpus)
