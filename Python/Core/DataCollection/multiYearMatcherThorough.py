@@ -3,9 +3,13 @@
 import os
 import multiprocessing as mp
 import psutil
+import pandas as pd
 from Database.SQLfuncs import SQLfuncs
 
 from difflib import SequenceMatcher
+
+YEARS_START = 0
+YEARS_END = 5000
 
 db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
 cdli_years = db.execute_select('select * from cdliyears;')
@@ -58,8 +62,8 @@ if __name__ == '__main__':
     n_cpus = psutil.cpu_count()
     procs = list()
     progress = mp.Array('i', range(n_cpus))
-    years = db.execute_select("select * from rawyearsfixed group by tabid;")
-    print(len(years))
+    years = db.execute_select("select * from rawyearsfixed group by tabid where ;")
+    years = years[YEARS_START:YEARS_END]
     num_years = len(years)
     thread_size = int(num_years/n_cpus)
     pos = 0
