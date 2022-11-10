@@ -1,7 +1,5 @@
 # Sumerian-Social-Network-Project
-
-<p>
-connect to database: in mysql shell do
+<p>connect to database: in mysql shell do
 	\connect external@sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com
 with password:
 	turamili
@@ -14,15 +12,16 @@ to enter sql query mode
 
 the external user has permissions to select from all tables in sumerianDB
 </p>
+
 # Packages
-<p>
-networkx
+<p>networkx
 plotly
 dash-cytoscape
 pandas
 pydot
 graphviz
 </p>
+
 # File Structure
 ``` 
 |__ C++ --> Contains all the C++ scripts this project uses
