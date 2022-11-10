@@ -4,17 +4,13 @@ import os
 import multiprocessing as mp
 import psutil
 import pandas as pd
+import ctypes
 from Database.SQLfuncs import SQLfuncs
 
 from difflib import SequenceMatcher
 
 YEARS_START = 0
-YEARS_END = 5000
-
-db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
-cdli_years = db.execute_select('select * from cdliyears;')
-for i in range(len(cdli_years)):
-    cdli_years[i] = cdli_years[i][:2]
+YEARS_END = 2500
 
 def get_sim_metric(s1, s2):
     ssl = len(s1)
@@ -27,7 +23,7 @@ def get_sim_metric(s1, s2):
         return best
     return SequenceMatcher(None, s1, s2).ratio()
 
-def match_year(year_name):
+def match_year(year_name, cdli_years):
     best_year = ''
     sim_metric = 0
     for row in range(len(cdli_years)):
@@ -38,51 +34,58 @@ def match_year(year_name):
             best_year = cdli_years[row][1]
     return best_year, sim_metric
 
-def thread_function(years, cpu, progress):
+def thread_function(years, cpu, progress, queue, cdli_years):
     progress[cpu - 1] = 0
-    #db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
     for tuple in years:
         progress[cpu - 1] += 1
-        row = 0
         best_sim = 0
         best_year = 'start'
         year = tuple[0]
         tablet = tuple[1]
         for i in range(len(cdli_years)):
-            temp_year, similarity = match_year(year)
+            temp_year, similarity = match_year(year, cdli_years)
             if similarity >= best_sim:
                 best_year = temp_year
                 best_sim = similarity
         best_sim *= 100.0
-        db.execute_insert(f'insert into bestyearsfixed values (\"{best_year}\", \"{tablet}\", {int(best_sim)});')
-        row += 1
+        queue.put(f'insert into bestyearsfixed values (\"{best_year}\", \"{tablet}\", {int(best_sim)});')
+
+def consume(queue, progress, num_years):
+    n_cpus = psutil.cpu_count()
+    db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
+    sum=0
+    while queue.qsize() > 0 and sum < num_years:
+        db.execute_insert(queue.get())
+        sum = 0
+        for i in range(n_cpus):
+            sum += progress[i]
+        print("%d/%d" % (sum, num_years), end='\r')
 
 if __name__ == '__main__':
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
+    cdli_years = db.execute_select('select * from cdliyears;')
+    for i in range(len(cdli_years)):
+        cdli_years[i] = cdli_years[i][:2]
     n_cpus = psutil.cpu_count()
-    procs = list()
-    progress = mp.Array('i', range(n_cpus))
+    procs = []
+    progress = mp.Array(ctypes.c_int, range(n_cpus))
+    queue = mp.Queue()
     years = db.execute_select("select * from rawyearsfixed group by tabid;")
+    db.close()
     years = years[YEARS_START:YEARS_END]
     num_years = len(years)
     thread_size = int(num_years/n_cpus)
     pos = 0
     for cpu in range(n_cpus - 1):
-        proc = mp.Process(target=thread_function, args=(years[pos:(pos + thread_size - 1)], cpu, progress,))
+        proc = mp.Process(target=thread_function, args=(years[pos:(pos + thread_size - 1)], cpu, progress, queue, cdli_years))
         procs.append(proc)
         pos += thread_size
-    proc = mp.Process(target=thread_function, args=(years[pos:(num_years - 1)], n_cpus, progress,))
+    proc = mp.Process(target=thread_function, args=(years[pos:(num_years - 1)], n_cpus, progress, queue, cdli_years))
     procs.append(proc)
+    procs.append(mp.Process(target=consume, daemon=True, args=(queue, progress, num_years)))
 
     for p in procs:
         p.start()
-
-    sum = 0
-    while sum < num_years - 150:
-        sum = 0
-        for i in range(n_cpus):
-            sum += progress[i]
-        print("%d/%d" % (sum, num_years), end='\r')
 
     for p in procs:
         p.join()

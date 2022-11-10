@@ -43,3 +43,6 @@ class SQLfuncs(object):
             if input[i] == '\'':
                 out += '\''
         return out
+
+    def close(self):
+        self.connection.close()
