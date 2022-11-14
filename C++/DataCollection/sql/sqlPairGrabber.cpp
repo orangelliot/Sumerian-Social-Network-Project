@@ -56,9 +56,11 @@ int main(){
     while(result->next()){
         if(count < 2){
             cout << result << "," end; 
+            count++;
         }
         else{
             cout << result << endl;
+            count = 0;
         }
     }
 
