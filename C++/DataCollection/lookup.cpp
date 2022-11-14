@@ -19,14 +19,21 @@ int main(int argc, char *argv[]){
   ifstream tablet;
   ofstream csv;
   ofstream csv2;
-  csv.open("../../Dataset/Output/eren2");
+  csv.open("../../Dataset/Output/gurusz");
   csv << "TabletID\tWord\tPOS\t" << endl;
 
   string fileName;
   string tabletID;
 
   string path = "../../Dataset/Translated/";
+  int total = 0;
   for(auto & entry : fs::directory_iterator(path)){
+    total++;
+  }
+
+  int count = 0;
+  for(auto & entry : fs::directory_iterator(path)){
+    cout << count++ << "/" << total << "\r";
     tablet.open(entry.path().c_str());
 
     fileName = entry.path();
@@ -42,6 +49,7 @@ int main(int argc, char *argv[]){
 
     int counter = 0;
     while(tablet >> word){
+      
       if(counter == 0){
         counter++;
       }
