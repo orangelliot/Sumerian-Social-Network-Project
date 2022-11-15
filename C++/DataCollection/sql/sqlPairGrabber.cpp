@@ -44,7 +44,7 @@ int main(){
 
     connect->setSchema("sumerianDB");
 
-    prepState = connect->prepareStatement("SELECT * FROM;");
+    prepState = connect->prepareStatement("SELECT * FROM pair;");
     result = prepState->executeQuery();
 
     ofstream file;
