@@ -48,7 +48,7 @@ int main(){
     result = prepState->executeQuery();
 
     ofstream file;
-    file.open("../../../Dataset/Output/AllPairs");
+    file.open("../../../Dataset/Output/AllPairs.csv");
     file << "Pair1,Pair2,Count" << endl;
     
 
