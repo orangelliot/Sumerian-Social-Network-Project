@@ -47,19 +47,19 @@ int main(){
     prepState = connect->prepareStatement("SELECT * FROM;");
     result = prepState->executeQuery();
 
-    ifstream file;
+    ofstream file;
     file.open("../../../Dataset/Output/AllPairs");
-    csv << "Pair1,Pair2,Count" << endl;
+    file << "Pair1,Pair2,Count" << endl;
     
 
     int count = 0;
     while(result->next()){
         if(count < 2){
-            cout << result << "," << end; 
+            file << result << ","; 
             count++;
         }
         else{
-            cout << result << endl;
+            file << result << endl;
             count = 0;
         }
     }
