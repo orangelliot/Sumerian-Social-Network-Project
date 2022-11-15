@@ -48,14 +48,14 @@ int main(){
     result = prepState->executeQuery();
 
     ifstream file;
-    csv.open("../../../Dataset/Output/AllPairs");
+    file.open("../../../Dataset/Output/AllPairs");
     csv << "Pair1,Pair2,Count" << endl;
     
 
     int count = 0;
     while(result->next()){
         if(count < 2){
-            cout << result << "," end; 
+            cout << result << "," << end; 
             count++;
         }
         else{
@@ -64,7 +64,7 @@ int main(){
         }
     }
 
-    csv.close();
+    file.close();
 
     delete result;
     delete prepState;
