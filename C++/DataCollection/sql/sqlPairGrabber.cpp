@@ -27,7 +27,7 @@ string password;
 int main(){
     sql::Driver *driver;
     sql::Connection *connect;
-    sql::PreparedStatement *prepState;
+    sql::Statement *prepState;
     sql::ResultSet *result;
 
     cout << "Password: ";
@@ -44,8 +44,8 @@ int main(){
 
     connect->setSchema("sumerianDB");
 
-    prepState = connect->prepareStatement("SELECT * FROM pair;");
-    result = prepState->executeQuery();
+    prepState = connect->createStatement();
+    result = prepState->executeQuery("SELECT * FROM pair;");
 
     ofstream file;
     file.open("../../../Dataset/Output/AllPairs.csv");
@@ -54,12 +54,16 @@ int main(){
 
     int count = 0;
     while(result->next()){
-        if(count < 2){
-            file << result << ","; 
+        if(count < 1){
+            file << result->getString("P1") << ","; 
+            count++;
+        }
+        else if(count < 2){
+            file << result->getString("P2") << ","; 
             count++;
         }
         else{
-            file << result << endl;
+            file << result->getString("Count") << endl;
             count = 0;
         }
     }
