@@ -1,16 +1,13 @@
 #Elliot Fisk: find closest match for each tablet's year
 
-import os
 import multiprocessing as mp
 import psutil
-import pandas as pd
 import ctypes
 from Database.SQLfuncs import SQLfuncs
-
 from difflib import SequenceMatcher
 
 YEARS_START = 0
-YEARS_END = 2500
+YEARS_END = 3000
 
 def get_sim_metric(s1, s2):
     ssl = len(s1)
@@ -37,7 +34,7 @@ def match_year(year_name, cdli_years):
 def thread_function(years, cpu, progress, queue, cdli_years):
     progress[cpu - 1] = 0
     for tuple in years:
-        progress[cpu - 1] += 1
+        progress[cpu] += 1
         best_sim = 0
         best_year = 'start'
         year = tuple[0]
@@ -54,8 +51,9 @@ def consume(queue, progress, num_years):
     n_cpus = psutil.cpu_count()
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
     sum=0
-    while queue.qsize() > 0 and sum < num_years:
-        db.execute_insert(queue.get())
+    while queue.qsize() > 0 or sum < num_years:
+        if(queue.qsize() > 0):
+            db.execute_insert(queue.get())
         sum = 0
         for i in range(n_cpus):
             sum += progress[i]
@@ -67,6 +65,7 @@ if __name__ == '__main__':
     for i in range(len(cdli_years)):
         cdli_years[i] = cdli_years[i][:2]
     n_cpus = psutil.cpu_count()
+    print("n_cpus = " + str(n_cpus))
     procs = []
     progress = mp.Array(ctypes.c_int, range(n_cpus))
     queue = mp.Queue()
@@ -80,7 +79,7 @@ if __name__ == '__main__':
         proc = mp.Process(target=thread_function, args=(years[pos:(pos + thread_size - 1)], cpu, progress, queue, cdli_years))
         procs.append(proc)
         pos += thread_size
-    proc = mp.Process(target=thread_function, args=(years[pos:(num_years - 1)], n_cpus, progress, queue, cdli_years))
+    proc = mp.Process(target=thread_function, args=(years[pos:(num_years - 1)], n_cpus - 1, progress, queue, cdli_years))
     procs.append(proc)
     procs.append(mp.Process(target=consume, daemon=True, args=(queue, progress, num_years)))
 
