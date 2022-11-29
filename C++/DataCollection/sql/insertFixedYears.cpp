@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include <bits/stdc++.h>
 
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
@@ -46,7 +47,8 @@ int main(){
 
     state = connect->createStatement();
     state->execute("DROP TABLE IF EXISTS rawyearsfixed");
-    state->execute("CREATE TABLE rawyearsfixed(year varchar(255) not null, tabid char(128) not null, FOREIGN KEY (tabid) REFERENCES tabids (tabid));");
+    state->execute("CREATE TABLE rawyearsfixed(year varchar(255) not null, tabid char(128) not null);");
+    //state->execute("CREATE TABLE rawyearsfixed(year varchar(255) not null, tabid char(128) not null, FOREIGN KEY (tabid) REFERENCES tabids (tabid));");
     delete state;
 
     prepState = connect->prepareStatement("INSERT INTO rawyearsfixed(year, tabid) VALUES(?,?)");
@@ -55,15 +57,15 @@ int main(){
     file.open("../../../Dataset/Output/years_formatted.csv");
 
     char c;
-    string year;
-    string tablet;
-    for(int x = 0; x < 10; x++){
-        unformatted.get(c);
+    string year = "";
+    string tablet = "";
+    for(int x = 0; x < 11; x++){
+        file.get(c);
     }
-
     bool swtch = 0;
     while(file.good()){
-        unformatted.get(c);
+        file.get(c);
+        string s(1, c);
 
         if(c == ','){
             swtch = 1;
@@ -72,18 +74,23 @@ int main(){
         }
         else if(c == '\n'){
             swtch = 0;
-            year = "";
-            tablet = "";
+            if(tablet[0] == '\n'){
+              tablet.erase(tablet.begin());
+            }
 
             prepState->setString(1, year);
             prepState->setString(2, tablet);
+            prepState->execute();
+
+            year = "";
+            tablet = "";
         }
 
-        if(swtch == 0){
-            year = year + c;
+        if(swtch == 0 && c != '\n'){
+            year = year + s;
         }
-        else{
-            tablet = tablet + c;
+        else if(c != ','){
+            tablet = tablet + s;
         }
     }
 
