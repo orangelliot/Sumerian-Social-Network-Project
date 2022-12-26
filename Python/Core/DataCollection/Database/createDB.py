@@ -14,7 +14,6 @@ try:
             cdliname varchar(255) not null,
             kingnum varchar(63) not null,
             seqnum int not null,
-            PRIMARY KEY (kingnum)
             );'''
         createTabids = '''CREATE TABLE tabids (
             seqid int not null,
@@ -24,7 +23,6 @@ try:
             numyears int,
             kingnum varchar(63),
             PRIMARY KEY (tabid),
-            FOREIGN KEY (kingnum) REFERENCES cdliyears (kingnum)
             );'''
         createRawnames = '''CREATE TABLE rawnames (
             name varchar(255) not null,

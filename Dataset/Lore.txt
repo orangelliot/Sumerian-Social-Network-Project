@@ -1,0 +1,7 @@
+pillager outpost = -104 -148
+
+desert = 147 101
+
+froz ocean = -57 -71
+
+slime farm = -18 30

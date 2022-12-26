@@ -1,0 +1,5 @@
+set up environment
+linear regression
+mean squared error high r2 low
+
+6pm thurs meet

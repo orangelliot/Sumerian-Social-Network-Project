@@ -1,0 +1,4 @@
+delete brackets, parens, # and /
+change accented s to sz
+change accented i to
+change accented a to

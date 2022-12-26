@@ -6,8 +6,8 @@ import ctypes
 from Database.SQLfuncs import SQLfuncs
 from difflib import SequenceMatcher
 
-YEARS_START = 0
-YEARS_END = 3000
+YEARS_START = 6000
+YEARS_END = 9000
 
 def get_sim_metric(s1, s2):
     ssl = len(s1)

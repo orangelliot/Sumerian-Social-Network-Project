@@ -1,3 +1,9 @@
+# MultiDotNet Creator CSV
+# October 2022
+# Elliot Fisk
+# ---------------
+# TODO synopsis and comments v below v
+
 import multiprocessing as mp
 import pydot
 from Database.SQLfuncs import SQLfuncs
