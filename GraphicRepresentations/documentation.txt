@@ -1,0 +1,6 @@
+fig 1: tablet chosen years using raw mean shared year, weight = num shared names
+fig 2: multiplied weight by function of year to eliminate outlier years.
+    <50, L=1, k=0.5, x0=30
+    else, L=-1, k=0.5, x0=70, +1 to push above y axis
+fig 3: multiplied weight by similarity of tablet 2 / 100
+fig 4: applied both fig2 transformation and fig3 transformation
