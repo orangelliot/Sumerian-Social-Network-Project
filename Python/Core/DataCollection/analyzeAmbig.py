@@ -34,6 +34,9 @@ for i in range(len(net_df)):
     finalvals[-1][1] += net_df[i][3]*weight
     totalconnections += weight
 
+finalvalsout = np.array(finalvals)
+finalvalsout = pd.DataFrame(finalvals)
+finalvalsout.to_csv("ambigfinalvals.csv")
 
 avgyears = []
 for i in range(len(finalvals)):
