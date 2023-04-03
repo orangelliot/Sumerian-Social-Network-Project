@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-#Elliot Fisk: upload edge count culled datasets to SQL
-=======
 # Uploaded Culled 
 # October 2022
 # Elliot Fisk
 # ---------------
 # TODO synopsis and comments v below v
->>>>>>> 6e744b459c41db5cf92f2d7f25600ad6c711acb5
 
 import pandas as pd
 import multiprocessing as mp

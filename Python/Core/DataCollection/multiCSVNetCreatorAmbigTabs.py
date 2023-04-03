@@ -1,6 +1,5 @@
 #Elliot Fisk: create CSV edgelist file for tracking shared names as edge weights
 
-import math
 import multiprocessing as mp
 import numpy as np
 import pandas as pd
@@ -8,29 +7,35 @@ from Database.SQLfuncs import SQLfuncs
 
 CULLING_SIZE = 1000
 
+# calculate edges and add them to a queue to be written to the main file
 def enqueue_edges(names, q, cpu, progress):
     progress[cpu - 1] = 0
     db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
 
+    # create string for later use in query
     names_string = '('
     for name in names:
         names_string = f"{names_string}'{name}',"
     names_string = names_string[:-1]
     names_string += ')'
     
+    # query returns seqids for tablets from ambignames with a name in names
     ambig_tabs = db.execute_select(f"select tabids.seqid from (ambigtabs{CULLING_SIZE} join tabids on ambigtabs{CULLING_SIZE}.tabid = tabids.tabid) join rawnames on ambigtabs{CULLING_SIZE}.tabid = rawnames.tabid where name in {names_string};")
     for i in range(len(ambig_tabs)):
         ambig_tabs[i] = ambig_tabs[i][0]
 
+    # generate edges loop
     for name in names:
         progress[cpu - 1] += 1
+
+        # get all tablets with name 'name'
         query = f"select distinct tabids{CULLING_SIZE}.seqid from rawnames join tabids{CULLING_SIZE} where rawnames.tabid = tabids{CULLING_SIZE}.tabid and name = \'" + name + "\';"
         tabs_with_name = db.execute_select(query)
 
         for i in range(len(tabs_with_name)):
             tabs_with_name[i] = tabs_with_name[i][0]
-    
 
+        # main loop to generate edges
         while len(ambig_tabs) > 1:
             sup_tab = ambig_tabs.pop()
             for sub_tab in tabs_with_name:
