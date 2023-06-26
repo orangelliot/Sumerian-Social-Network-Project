@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import os
-from Database.SQLfuncs import SQLfuncs
+from Core.DataCollection.Database.SQLfuncs import SQLfuncs
 
 db = SQLfuncs('localhost', 'root', 'admin2019')
 

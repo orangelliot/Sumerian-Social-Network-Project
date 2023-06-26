@@ -8,7 +8,6 @@ import os
 import psutil
 import multiprocessing as mp
 from Database.SQLfuncs import SQLfuncs
-
 import re
 
 def thread_function(path, tablets, cpu, progress):

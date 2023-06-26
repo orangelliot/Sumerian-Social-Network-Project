@@ -17,7 +17,7 @@ def format_producer(incl_set, excl_set, send):
         for j in range(len(excl_set)):
             new_row = {'incl_tab':incl_set[i][0], 'excl_tab':excl_set[j][0], 'edge_count':0, 'year':-1, 'name_dist_mod':-1, 'name_com_mod':-1}
             thread_df.loc[len(thread_df)] = new_row
-        print(f'{os.getpid} finished {i}/{len(incl_set)} tablets')
+        print(f'{os.getpid()} finished {i}/{len(incl_set)} tablets')
     send.send(thread_df)
     print(f'finished {os.getpid()}')
 

@@ -1,4 +1,4 @@
-from Database.SQLfuncs import SQLfuncs
+from Core.DataCollection.Database.SQLfuncs import SQLfuncs
 import shutil
 import os
 
