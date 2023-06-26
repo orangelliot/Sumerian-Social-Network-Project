@@ -2,8 +2,7 @@
 # March 2022
 # Elliot Fisk
 # ---------------
-# TODO synopsis and comments v below v
-# Elliot Fisk: write data on tablet lengths to excel spreadsheet
+# write data on tablet lengths to excel spreadsheet
 
 import os
 import openpyxl

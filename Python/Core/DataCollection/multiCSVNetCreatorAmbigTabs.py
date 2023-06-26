@@ -72,6 +72,7 @@ if __name__ == '__main__':
     q = mp.Queue()
     progress = mp.Array('i', range(n_cpus))
     procs = list()
+    # select all the names on ambig tabs
     names = db.execute_select(f'select distinct name from ambigtabs{CULLING_SIZE} join (rawnames join tabids on rawnames.tabid = tabids.tabid) where ambigtabs{CULLING_SIZE}.tabid = tabids.tabid;')
     for i in range(len(names)):
         names[i] = names[i][0]

@@ -2,8 +2,7 @@
 # May 2022
 # Elliot Fisk
 # ---------------
-# TODO synopsis and comments v below v
-# Elliot Fisk: collect years from tablet data
+# gets years from the raw tablet data
 
 import os
 import psutil

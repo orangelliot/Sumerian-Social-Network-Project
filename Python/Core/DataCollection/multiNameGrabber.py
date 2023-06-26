@@ -2,7 +2,7 @@
 # April 2022
 # Elliot Fisk
 # ---------------
-# TODO synopsis and comments v below v
+# gets names from the raw tablet data
 
 import os
 import multiprocessing as mp
@@ -13,7 +13,7 @@ path = os.getcwd() + '/Dataset/Translated/'
 
 def thread_function(path, tablets, cpu, progress):
     progress[cpu - 1] = 0
-    db = SQLfuncs('sumerian-social-network.clzdkdgg3zul.us-west-2.rds.amazonaws.com', 'root', '2b928S#%')
+    db = SQLfuncs('localhost', 'root', 'admin2019')
     for tabid in tablets:
         progress[cpu - 1] += 1
         tab = open(path + tabid, 'r', encoding='utf-8')

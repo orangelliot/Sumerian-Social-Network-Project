@@ -9,9 +9,8 @@ class SQLfuncs(object):
                 host=hostname,
                 user=username,
                 password=userpassword,
-                database='sumerianDB'
+                database='SUMERIAN23'
             )
-            #print('Connection to sumerian-social-network successful')
         except Error as e:
             print(f"The error '{e}' occurred")
 

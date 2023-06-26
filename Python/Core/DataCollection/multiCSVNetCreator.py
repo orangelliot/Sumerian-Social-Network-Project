@@ -10,8 +10,8 @@ import numpy as np
 import pandas as pd
 from Database.SQLfuncs import SQLfuncs
 
-# maximum allowed edge count for any tablet
-CULLING_SIZE = 100
+# maximum allowed edge count for any name
+CULLING_SIZE = 1000
 
 # calculate edges and add them to a queue to be written to the main file
 def enqueue_edges(names, q, cpu, progress):
@@ -21,7 +21,7 @@ def enqueue_edges(names, q, cpu, progress):
     # for each given name
     for name in names:
         progress[cpu - 1] += 1
-        # get all the tablets which share 'name'
+        # get all the tablets which share 'name' from tablets in tabids{CULLING_SIZE}
         query = f"select distinct tabids{CULLING_SIZE}.seqid from rawnames join tabids{CULLING_SIZE} where rawnames.tabid = tabids{CULLING_SIZE}.tabid and name = \'" + name + "\';"
         tabs_with_name = db.execute_select(query)
 
