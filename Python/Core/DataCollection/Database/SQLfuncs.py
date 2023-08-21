@@ -1,4 +1,5 @@
 from mysql.connector import connect, Error
+import numpy as np
 
 class SQLfuncs(object):
     connection = None
@@ -29,7 +30,7 @@ class SQLfuncs(object):
         #print(query)
         try:
             cursor.execute(query)
-            return cursor.fetchall()
+            return np.array(cursor.fetchall())
         except Error as e:
             print(f"The error '{e}' occurred")
             return None
